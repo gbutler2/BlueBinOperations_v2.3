@@ -1,4 +1,4 @@
-﻿<%@ Page Title="BlueBin Analytics Dashboard" Language="VB" AutoEventWireup="true" CodeFile="Dashboard.aspx.vb" Inherits="Dashboard" %>
+﻿<%@ Page Title="BlueBin Analytics Dashboard" Language="VB" AutoEventWireup="true" CodeFile="DashboardSSO.aspx.vb" Inherits="DashboardSSO" %>
 
 <!doctype html>
 <html>
@@ -31,7 +31,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="themes">Supply Chain <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
-							<%-- <li><asp:Label runat="server" ID="URLLabel"></asp:Label></li>--%>
+                            <li><asp:Label runat="server" ID="URLLabel"></asp:Label></li>
                             <li><a href="#" onClick="switchView('Daily Management Dashboard')">Daily Management Dashboard</a></li>
                             <li class="divider"></li>
                             <li><a href="#" onClick="switchView('Node Activity')">Node Activity</a></li>
@@ -46,7 +46,7 @@
 							<li><a href="#" onClick="switchView('Order Details')">Order Details</a></li>
                             <li class="divider"></li>
                             <li><a href="#" onClick="switchView('Item Locator')">Item Locator</a></li>
-                            <li><a href="#" onClick="switchView('Par Valuation Report')">Par Valuation</a></li>   
+                            <li><a href="#" onClick="switchView('Par Valuation Report')">Par Valuation</a></li>  
               </ul>
             </li>
             <li class="dropdown">
@@ -58,7 +58,6 @@
                             <li><a href="#" onClick="switchView('Warehouse Size')">Warehouse Detail</a></li>
                             <li><a href="#" onClick="switchView('Pick Line Volume')">Pick Line Volume</a></li>
                             <li><a href="#" onClick="switchView('Overall Line Volume')">Overall Line Volume</a></li>
-                            <li><a href="#" onClick="switchView('Kanbans Adjusted')">Kanbans Adjusted</a></li>
                             <li class="divider"></li>
                             <li><a href="#" onClick="switchView('QCN Dashboard')">QCN Dashboard</a></li>
                             <li><a href="#" onClick="switchView('Gemba Dashboard')">Gemba Dashboard</a></li>
@@ -105,8 +104,7 @@
                             <li><a href="#" onClick="revertAll()">Reset All Filters</a></li>
                             <li><a href="#" onClick="PauseUpdate()">Pause Filter Refresh</a></li>
                             <li><a href="#" onClick="ResumeUpdate()">Resume Filter Refresh</a></li>
-                            <li><a href="#" onClick="RefreshReport()">Refresh All Report Data</a></li>			
-                            
+                            <li><a href="#" onClick="RefreshReport()">Refresh All Report Data</a></li>		
                         </ul>
                     </li>
           </ul>
@@ -166,7 +164,7 @@ var PauseUpdate = function () {
     viz.pauseAutomaticUpdatesAsync();
 }
 var ResumeUpdate = function () {
-    viz.resumeAutomaticUpdatesAsync();
+    viz.resumeAutomaticUpdatesAsync()
 }
 var ToggleUpdate = function () {
     viz.toggleAutomaticUpdatesAsync();
@@ -174,7 +172,6 @@ var ToggleUpdate = function () {
 var RefreshReport = function () {
     viz.refreshDataAsync();
 }
-
 
 
 </script>

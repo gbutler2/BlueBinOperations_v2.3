@@ -16,6 +16,7 @@ Partial Class SiteConfiguration
         hiddenConfig.Visible = True
         hiddenQCNType.Visible = False
         hiddenQCNStatus.Visible = False
+        ConfigSearch.Visible = True
     End Sub
 
     Protected Sub QCNTypeConfigB_Click(sender As Object, e As EventArgs) Handles QCNTypeConfigB.Click
@@ -26,6 +27,7 @@ Partial Class SiteConfiguration
         hiddenQCNType.Visible = True
         hiddenConfig.Visible = False
         hiddenQCNStatus.Visible = False
+        ConfigSearch.Visible = False
     End Sub
 
     Protected Sub QCNStatusConfigB_Click(sender As Object, e As EventArgs) Handles QCNStatusConfigB.Click
@@ -36,6 +38,7 @@ Partial Class SiteConfiguration
         hiddenQCNStatus.Visible = True
         hiddenConfig.Visible = False
         hiddenQCNType.Visible = False
+        ConfigSearch.Visible = False
     End Sub
 
     Protected Sub AllConfigB_Click(sender As Object, e As EventArgs) Handles AllConfigB.Click
@@ -47,6 +50,7 @@ Partial Class SiteConfiguration
         hiddenConfig.Visible = True
         hiddenQCNType.Visible = True
         hiddenQCNStatus.Visible = True
+        ConfigSearch.Visible = True
     End Sub
 
 
@@ -58,6 +62,7 @@ Partial Class SiteConfiguration
             GridViewConfig.Visible = True
             GridViewQCNType.Visible = False
             GridViewQCNStatus.Visible = False
+            ConfigSearch.Visible = True
         End If
     End Sub
 

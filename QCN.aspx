@@ -56,15 +56,20 @@
 <p>
 
 
-               
-     <asp:DropDownList ID="SearchList1" AppendDataBoundItems="true" runat="server" DataSourceID="QCNLocationDS" DataTextField="LocationName" DataValueField="LocationName">
+     <b>Assigned:</b>&nbsp;<asp:DropDownList ID="AssignedSearchDD" AppendDataBoundItems="true" runat="server" DataSourceID="AssignedSearchDS" DataTextField="AssignedUserName" DataValueField="AssignedUserName">
             <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
         </asp:DropDownList>
            
-     <asp:SqlDataSource runat="server" ID="QCNLocationDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT b.LocationName FROM qcn.QCN a inner join bluebin.[DimLocation] b on rtrim(a.LocationID) = rtrim(b.LocationID) WHERE b.BlueBinFlag= 1 group by b.LocationName order by 1"></asp:SqlDataSource>
+     <asp:SqlDataSource runat="server" ID="AssignedSearchDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT AssignedUserID,v.LastName + ', ' + v.FirstName as AssignedUserName FROM qcn.QCN a inner join [bluebin].[BlueBinResource] v on AssignedUserID = v.BlueBinResourceID order by 2"></asp:SqlDataSource>
+  <p>
+     <b>Location:</b>&nbsp;&nbsp;<asp:DropDownList ID="SearchList1" AppendDataBoundItems="true" runat="server" DataSourceID="QCNLocationDS" DataTextField="LocationName" DataValueField="LocationName">
+            <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
+        </asp:DropDownList>
+           
+     <asp:SqlDataSource runat="server" ID="QCNLocationDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT case when b.LocationID = b.LocationName then b.LocationID else b.LocationID + ' - ' + b.[LocationName] end as LocationName FROM bluebin.[DimLocation] b  inner join qcn.QCN a on rtrim(a.LocationID) = rtrim(b.LocationID) WHERE a.Active = 1 and b.BlueBinFlag= 1 order by 1"></asp:SqlDataSource>
 &nbsp;<asp:Button ID="SearchButton"  runat="server" Text="Search" /> &nbsp;&nbsp; 
     </p>
-    <p><asp:CheckBox ID="CompletedCB" runat="server" Text="Include Completed and Rejected?" />
+    <p><asp:CheckBox ID="CompletedCB" OnCheckedChanged="OnCheckedChanged" AutoPostBack="true" runat="server" Text="Include Completed and Rejected?" />
     </p>
 
 
@@ -102,7 +107,7 @@
             <asp:BoundField DataField="DateEntered" HeaderText="Date Entered" SortExpression="DateEntered" DataFormatString="{0:d}"/>
             <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" SortExpression="LastUpdated" DataFormatString="{0:d}"/>
             <asp:BoundField DataField="DaysOpen" HeaderText="Days Open" SortExpression="DaysOpen" />
-            <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" DataFormatString="{0:d}" />
+            <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" DataFormatString="{0:d}"  Visible ="False"/>
             <asp:BoundField DataField="BinStatus" HeaderText="Bin Status" SortExpression="BinStatus" />
             <asp:BoundField DataField="Status" HeaderText="QCN Status" SortExpression="Status" />
             <asp:BoundField runat="server" DataField="InternalReference" HeaderText="Reference" SortExpression="InternalReference" />
@@ -132,9 +137,10 @@
     <p>
   
         <asp:SqlDataSource ID="QCNDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:Site_ConnectionString %>" 
-                SelectCommand="exec sp_SelectQCN @LocationName,@Completed" DeleteCommand="exec sp_DeleteQCN @QCNID">
+                SelectCommand="exec sp_SelectQCN @LocationName,@Completed,@AssignedUserName" DeleteCommand="exec sp_DeleteQCN @QCNID">
             <SelectParameters>
-                <asp:ControlParameter ControlID="SearchList1" PropertyName="Text" DefaultValue="%" Name="LocationName"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="AssignedSearchDD" PropertyName ="Text" DefaultValue="%" Name="AssignedUserName" Type="String"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="SearchList1" PropertyName ="Text" DefaultValue="%" Name="LocationName" Type="String"></asp:ControlParameter>
                 <asp:ControlParameter ControlID="CompletedCB" Name="Completed" PropertyName="Checked" /> 
             </SelectParameters>
 

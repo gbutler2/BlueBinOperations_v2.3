@@ -146,6 +146,11 @@ Partial Public Class QCN
         ' Verifies that the control is rendered
     End Sub
 
+    Protected Sub OnCheckedChanged(sender As Object, e As EventArgs)
+        GridViewQCN.Columns(26).Visible = TryCast(sender, CheckBox).Checked
+
+    End Sub
+
 End Class
 
 

@@ -229,9 +229,12 @@
                                              </asp:TableRow>
                                 </asp:Table>
                                                         
+            <br />
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - BlueBin.com <br />
+                <p>
+                    <a href="http://www.bluebin.com" target="_blank"><asp:Image runat="server" Height="23" ImageUrl="~/img/Bluebin_logo-inline.png" /></a> <br />
+                    &copy; <%: DateTime.Now.Year %> - BlueBin.com <br />
                     <span class="version"><asp:Label ID="LabelVersion" runat="server"></asp:Label></span></p>
             </footer>
 </div>

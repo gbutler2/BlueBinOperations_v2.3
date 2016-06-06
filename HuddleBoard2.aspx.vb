@@ -1,6 +1,7 @@
-﻿Imports System.Data
-Imports System.Configuration
+﻿Imports System
+Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Configuration
 Imports System.Web.Security
 Imports System.Web.UI
 Imports System.Web.UI.WebControls
@@ -9,7 +10,7 @@ Imports System.IO
 Imports System.Net
 Imports System.Text
 
-Partial Public Class GembaReportViewer
+Partial Public Class HuddleBoard2
     Inherits Page
     Protected TableauFullURL As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -48,7 +49,7 @@ Partial Public Class GembaReportViewer
                 TableauWorkbook = Convert.ToString(cmdtableau.ExecuteScalar())
                 cmdtableau.Parameters.Clear()
                 'Generic Login Name
-                cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauDefaultUser")
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauHBDefaultUser")
                 GenericLogin = Convert.ToString(cmdtableau.ExecuteScalar())
 
                 contableau.Close()
@@ -113,11 +114,12 @@ Partial Public Class GembaReportViewer
         Dim TableaURLDB As String = dt.Rows(0)("ConfigValue").ToString()
 
         'TableauFullURL = "http://intelligence.bluebin.com/t" & TableaURLDB & "Home"
-        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/" & TableauWorkbook & "/GembaDashboard"
+        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/HB-" & TableauWorkbook & "/HuddleBoard2"
 
         con.Close()
         'End If
     End Sub
+
 End Class
 
 

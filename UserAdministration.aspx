@@ -372,7 +372,7 @@
 <asp:TableRow>
 <asp:TableCell Width="500px"  >
 <asp:Label runat="server" id="hiddenRoleOperations" Visible="False"><h3>Role Operations</h3><p></asp:Label>
-        <asp:GridView ID="GridViewRoleOperations" OnRowCommand="GridViewRoleOperations_RowCommand" CssClass="GridViewitem" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataSourceID="RoleOperationsDatasource" AutoGenerateColumns="False" DataKeyNames="RoleID,OpID" AllowSorting="True" AllowPaging="True" ShowFooter="True">
+        <asp:GridView ID="GridViewRoleOperations" OnRowCommand="GridViewRoleOperations_RowCommand" CssClass="GridViewitem" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataSourceID="RoleOperationsDatasource" AutoGenerateColumns="False" DataKeyNames="RoleID,OpID" AllowSorting="True" AllowPaging="True" ShowFooter="True" PageSize="20">
         <AlternatingRowStyle BackColor="#DCDCDC"></AlternatingRowStyle>
 
         <Columns>

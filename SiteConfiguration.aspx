@@ -13,6 +13,14 @@
         </p>
               </asp:TableCell></asp:TableRow>
 <asp:TableRow Height="10"></asp:TableRow>
+<asp:TableRow ID="ConfigSearch" runat="server">
+    <asp:TableCell Width="500px"  >
+    <b>Config Type:</b> <asp:DropDownList ID="ConfigType" AppendDataBoundItems="true" runat="server" DataSourceID="ConfigTypeDS"  DataTextField="ConfigType" DataValueField="ConfigType">
+            <asp:ListItem Selected = "True" Text = "All Configs" Value = "" ></asp:ListItem>
+            </asp:DropDownList>
+            &nbsp;<asp:Button ID="SearchButton"  runat="server" Text="Search" /> &nbsp;&nbsp; 
+        </asp:TableCell></asp:TableRow>
+<asp:TableRow Height="10"></asp:TableRow>
     <asp:TableRow>
     <asp:TableCell Width="500px"  >
         <asp:Label runat="server" id="hiddenConfig" Visible="False"><h3>Advanced Config</h3></asp:Label>
@@ -41,19 +49,16 @@
             
             <asp:TemplateField HeaderText="Config Type" SortExpression="ConfigType">
                 <EditItemTemplate>
-                        <asp:DropDownList runat="server"  ID="ConfigTypeInsertDD" DataSourceID="ConfigTypeDataSource"  DataTextField="ConfigType" DataValueField="ConfigType" SelectedValue=<%#Bind("ConfigType")%>>
+                        <asp:DropDownList runat="server"  ID="ConfigTypeInsertDD" DataSourceID="ConfigTypeDS" DataTextField="ConfigType" DataValueField="ConfigType" SelectedValue=<%#Bind("ConfigType")%>>
                         </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ConfigTypeDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [ConfigType] FROM bluebin.[Config]"></asp:SqlDataSource>
-                     
+                    
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Bind("ConfigType") %>' ID="ConfigTypeLabel2"></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:DropDownList runat="server"  AutoPostBack="False" ID="ConfigTypeInsertDDF" DataSourceID="ConfigTypeDataSourceF"  DataTextField="ConfigType" DataValueField="ConfigType" SelectedValue=<%#Bind("ConfigType")%>>
-                        </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ConfigTypeDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [ConfigType] FROM bluebin.[Config]"></asp:SqlDataSource>
-                        
+                    <asp:DropDownList runat="server"  AutoPostBack="False" ID="ConfigTypeInsertDDF" DataSourceID="ConfigTypeDS"  DataTextField="ConfigType" DataValueField="ConfigType" SelectedValue=<%#Bind("ConfigType")%>>
+                        </asp:DropDownList>                    
                    </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Config Name" SortExpression="ConfigName">
@@ -261,8 +266,11 @@
 <p>
         <asp:SqlDataSource runat="server" ID="ConfigDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' 
             DeleteCommand="exec sp_DeleteConfig @original_ConfigID,@original_ConfigName,@original_ConfigValue" 
-            OldValuesParameterFormatString="original_{0}" SelectCommand="exec sp_SelectConfig" 
+            OldValuesParameterFormatString="original_{0}" SelectCommand="exec sp_SelectConfig @ConfigType" 
             UpdateCommand="exec sp_EditConfig @original_ConfigID,@ConfigValue,@ConfigType,@Active">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ConfigType" Name="ConfigType" PropertyName="SelectedValue" Type="String" DefaultValue="%" />
+        </SelectParameters>
         <DeleteParameters>
             <asp:Parameter Name="original_ConfigID" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="original_ConfigType" Type="String"></asp:Parameter>
@@ -323,5 +331,10 @@
     </asp:SqlDataSource>
 
 </p>
+
+        <p>
+            <asp:SqlDataSource runat="server" ID="ConfigTypeDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectConfigType"></asp:SqlDataSource>
+                    
+        </p>
      
 </asp:Content>

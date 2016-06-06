@@ -86,19 +86,20 @@
                                   </ul>
                                 </li>
                         <li class="dropdown">
-                                  <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="HardwareDD">Hardware<span class="caret"></span></a>
-                                  <ul class="dropdown-menu" aria-labelledby="themes">
-							                    <li><a runat="server" href="~/HardwareOrder">Hardware Home</a></li>
-                                                <li><a runat="server" href="~/HardwareOrderNew">New Hardware Order</a></li>     
-                                  </ul>
-                                </li>
-                        <li class="dropdown">
                                   <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="ScanningDD">Scanning<span class="caret"></span></a>
                                   <ul class="dropdown-menu" aria-labelledby="themes">
 							                    <li><a runat="server" href="~/Scans">Scanning Home</a></li>
                                                 <li><a runat="server" href="~/ScanLines">New Scanning Batch</a></li>     
                                   </ul>
                                 </li>
+                        <li class="dropdown">
+                                  <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="OpsDD">Ops<span class="caret"></span></a>
+                                  <ul class="dropdown-menu" aria-labelledby="themes">
+							                    <li><a runat="server" href="~/HardwareOrder" id="HardwareDD">Hardware Module</a></li>
+                                                <li><a runat="server" href="~/ConesDeployed" id="ConesDD">Cones Module</a></li>   
+                                  </ul>
+                        </li>
+                        
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -138,9 +139,12 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+            <br />
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - BlueBin.com <br />
+                <p>
+                    <a href="http://www.bluebin.com" target="_blank"><asp:Image runat="server" Height="23" ImageUrl="~/img/Bluebin_logo-inline.png" /></a> <br />
+                    &copy; <%: DateTime.Now.Year %> - BlueBin.com <br />
                     <span class="version"><asp:Label ID="LabelVersion" runat="server"></asp:Label></span></p>
             </footer>
         </div>

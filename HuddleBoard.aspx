@@ -64,7 +64,7 @@ var downloadWorkbook = function(){
 var shareViz = function(){
 	viz.showShareDialog();
 }
-
+<%--setInterval(function () { viz.refreshDataAsync() }, 1800000);--%>
 </script>
 </html>
 

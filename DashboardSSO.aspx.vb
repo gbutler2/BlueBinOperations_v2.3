@@ -12,7 +12,8 @@ Imports System.Net
 Imports System.Text
 
 
-Public Class Dashboard
+
+Public Class DashboardSSO
     Inherits Page
 
 
@@ -24,52 +25,9 @@ Public Class Dashboard
 
 
         If Me.Page.User.Identity.IsAuthenticated Then
-            Dim GenericLogin As String
-            Dim TableauSite As String
-            Dim TableauWorkbook As String
-            Dim TableauURL As String
             Dim UserLogin As String = Page.User.Identity.Name.ToString().ToLower()
             ' Create a request using a URL that can receive a post.
-
-
-            Dim constrtableau As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
-            Using contableau As New SqlConnection(constrtableau)
-                Using cmdtableau As New SqlCommand("sp_SelectConfigValues")
-                    cmdtableau.CommandType = CommandType.StoredProcedure
-                    cmdtableau.Connection = contableau
-                    contableau.Open()
-
-                    'Tableau URL Name
-                    cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauURL")
-                    TableauURL = Convert.ToString(cmdtableau.ExecuteScalar())
-                    cmdtableau.Parameters.Clear()
-                    'Tableau Site Name
-                    cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauSiteName")
-                    TableauSite = Convert.ToString(cmdtableau.ExecuteScalar())
-                    cmdtableau.Parameters.Clear()
-                    'Tableau Workbook Name
-                    cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauWorkbook")
-                    TableauWorkbook = Convert.ToString(cmdtableau.ExecuteScalar())
-                    cmdtableau.Parameters.Clear()
-                    'Generic Login Name
-                    cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauDefaultUser")
-                    GenericLogin = Convert.ToString(cmdtableau.ExecuteScalar())
-
-                    contableau.Close()
-                End Using
-            End Using
-
-            Dim TableauLogin As String
-            'Set the User Login to be bluebin only if it exists.  If it doesn't, use the generic login from the tables.
-            If UserLogin.Contains("@bluebin.com") Then
-                TableauLogin = UserLogin
-            Else
-                TableauLogin = GenericLogin
-            End If
-
-
-            Dim requeststring As String = TableauURL & "/trusted?"
-            Dim request As WebRequest = WebRequest.Create(requeststring)
+            Dim request As WebRequest = WebRequest.Create("http://intelligence.bluebin.com/trusted?")
             'http.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8")' Set the Method property of the request to POST.
             request.Method = "POST"
 
@@ -77,8 +35,7 @@ Public Class Dashboard
             'http://intelligence.bluebin.com/trusted/azJotmGio91cWOUH9Da6jmod/t/bluebinanalytics/views/Demo/Home
 
             ' Create POST data and convert it to a byte array.
-            Dim postData As String = "username=" & TableauLogin & "&target_site=" & TableauSite
-            'Dim postData As String = "username=demo@bluebin.com&target_site=bluebinanalytics"
+            Dim postData As String = "username=" & UserLogin & "&target_site=bluebinanalytics"
             Dim byteArray As Byte() = Encoding.UTF8.GetBytes(postData)
             ' Set the ContentType property of the WebRequest.
             request.ContentType = "application/x-www-form-urlencoded"
@@ -116,13 +73,13 @@ Public Class Dashboard
             da.Fill(dt)
 
             Dim TableaURLDB As String = dt.Rows(0)("ConfigValue").ToString()
-
             'TableauFullURL = "http://intelligence.bluebin.com/t" & TableaURLDB & "Home"
-            TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/" & TableauWorkbook & "/Home"
+            TableauFullURL = "http://intelligence.bluebin.com/trusted/" & responseFromServer & "/t" & TableaURLDB & "Home"
 
             con.Close()
 
-            'URLLabel.Text = requeststring
+
+            URLLabel.Text = TableauFullURL
 
             Dim MENUDashboardSC As String
             Dim MENUDashboardSrc As String
@@ -229,5 +186,6 @@ Public Class Dashboard
     End Sub
 
 
-
+    '/bluebinanalytics/views/MHS/Home
+    ' TableauFullURL.ToString()
 End Class

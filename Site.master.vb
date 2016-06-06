@@ -64,6 +64,8 @@ Partial Public Class SiteMaster
             Dim MENUOther As String
             Dim UserADMINPARMASTER As String
             Dim MENUADMINPARMASTER As String
+            Dim UserMENUCones As String
+            Dim MENUCones As String
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
             Using conroles As New SqlConnection(constr)
@@ -148,6 +150,11 @@ Partial Public Class SiteMaster
                     cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Scanning")
                     UserMENUScanning = Convert.ToString(cmdadmin.ExecuteScalar())
                     cmdadmin.Parameters.Clear()
+                    'UserMENU-Cones
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Cones")
+                    UserMENUCones = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
                     'UserMENU-Other
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
                     cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Other")
@@ -203,6 +210,10 @@ Partial Public Class SiteMaster
                     'MENU-Scanning
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Scanning")
                     MENUScanning = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    'MENU-Cones
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Cones")
+                    MENUCones = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
                     'MENU-Other
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Other")
@@ -284,6 +295,12 @@ Partial Public Class SiteMaster
                 GembaDD.Visible = False
             Else
                 GembaDD.Visible = True
+            End If
+
+            If MENUCones = "No" Or UserMENUCones = "No" Then
+                ConesDD.Visible = False
+            Else
+                ConesDD.Visible = True
             End If
 
             If MENUScanning = "No" Or UserMENUScanning = "No" Then

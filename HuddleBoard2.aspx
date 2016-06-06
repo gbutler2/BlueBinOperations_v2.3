@@ -1,4 +1,4 @@
-﻿<%@ Page Title="QCN Report Viewer - BlueBin DMS App" Language="VB" AutoEventWireup="true" CodeFile="QCNReportViewer.aspx.vb" Inherits="QCNReportViewer" %>
+﻿<%@ Page Title="Huddle Board2 - BlueBin DMS App" Language="VB" AutoEventWireup="true" CodeFile="HuddleBoard2.aspx.vb" Inherits="HuddleBoard2" %>
 
 <!DOCTYPE html>
 
@@ -64,7 +64,7 @@ var downloadWorkbook = function(){
 var shareViz = function(){
 	viz.showShareDialog();
 }
-setInterval(function () { viz.refreshDataAsync() }, 1800000);
+<%--setInterval(function () { viz.refreshDataAsync() }, 1800000);--%>
 </script>
 </html>
 
