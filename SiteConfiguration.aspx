@@ -25,7 +25,7 @@
     <asp:TableCell Width="500px"  >
         <asp:Label runat="server" id="hiddenConfig" Visible="False"><h3>Advanced Config</h3></asp:Label>
             <p> 
-        <asp:GridView ID="GridViewConfig"  OnRowCommand="GridViewConfig_RowCommand" CssClass="GridViewitem" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataSourceID="ConfigDataSource" AutoGenerateColumns="False" DataKeyNames="ConfigID" AllowSorting="True" AllowPaging="True" ShowFooter="True" PageSize="20">
+        <asp:GridView ID="GridViewConfig"  OnRowCommand="GridViewConfig_RowCommand" CssClass="GridViewitem" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataSourceID="ConfigDataSource" AutoGenerateColumns="False" DataKeyNames="ConfigID" AllowSorting="True" AllowPaging="True" ShowFooter="True" PageSize="30">
         <AlternatingRowStyle BackColor="#DCDCDC"></AlternatingRowStyle>
 
         <Columns>

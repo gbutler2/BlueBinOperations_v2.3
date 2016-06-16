@@ -19,6 +19,8 @@ Partial Public Class QCN
         If Me.Page.User.Identity.IsAuthenticated Then
             Dim UserLogin As String = Page.User.Identity.Name.ToString().ToLower()
             Dim QCNReferenceC As String
+            Dim OPQCNDashboardB As String
+
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
 
             Using conmenu As New SqlConnection(constr)
@@ -27,6 +29,11 @@ Partial Public Class QCN
                     cmdadmin.CommandType = CommandType.StoredProcedure
                     cmdadmin.Connection = conmenu
                     conmenu.Open()
+
+                    'QCN Dashboard Button
+                    cmdadmin.Parameters.AddWithValue("@ConfigName", "OP-QCN Dashboard")
+                    OPQCNDashboardB = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
 
                     'QCN-ReferenceC
                     cmdadmin.Parameters.AddWithValue("@ConfigName", "QCN-ReferenceC")
@@ -42,6 +49,11 @@ Partial Public Class QCN
 
             End If
 
+            If OPQCNDashboardB = "Yes" Then
+                QCNDashboardB.Visible = True
+            Else
+                QCNDashboardB.Visible = False
+            End If
 
         End If
 

@@ -10,6 +10,37 @@ Partial Class Gemba
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         GembaAuditNodeGridView.DataBind()
 
+        If Me.Page.User.Identity.IsAuthenticated Then
+            Dim UserLogin As String = Page.User.Identity.Name.ToString().ToLower()
+            Dim OPGembaDashboardB As String
+
+            Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
+
+            Using conmenu As New SqlConnection(constr)
+                Using cmdadmin As New SqlCommand("sp_ValidateMenus")
+
+                    cmdadmin.CommandType = CommandType.StoredProcedure
+                    cmdadmin.Connection = conmenu
+                    conmenu.Open()
+
+                    'QCN Dashboard Button
+                    cmdadmin.Parameters.AddWithValue("@ConfigName", "OP-Gemba Dashboard")
+                    OPGembaDashboardB = Convert.ToString(cmdadmin.ExecuteScalar())
+
+                    conmenu.Close()
+                End Using
+            End Using
+
+
+
+            If OPGembaDashboardB = "Yes" Then
+                GembaDashboardB.Visible = True
+            Else
+                GembaDashboardB.Visible = False
+            End If
+
+        End If
+
     End Sub
 
 

@@ -131,6 +131,37 @@ Public Class Dashboard
             Dim UserMENUDashboardSrc As String
             Dim UserMENUDashboardOps As String
             Dim UserMENUDashboardHB As String
+            'Reports List
+            Dim SCDailyManagementDB As String
+            Dim SCNodeActivity As String
+            Dim SCBinActivity As String
+            Dim SCBinVelocityReport As String
+            Dim SCSlowBinReport As String
+            Dim SCBlueBinParMaster As String
+            Dim SCItemMaster As String
+            Dim SCOpenScans As String
+            Dim SCOrderDetails As String
+            Dim SCItemLocator As String
+            Dim SCParValuation As String
+
+            Dim OPSupplySpend As String
+            Dim OPStatCalls As String
+            Dim OPWarehouseVolume As String
+            Dim OPWarehouseDetail As String
+            Dim OPPickLineVolume As String
+            Dim OPOverallLineVolume As String
+            Dim OPKanbansAdjusted As String
+            Dim OPQCNDashboard As String
+            Dim OPGembaDashboard As String
+
+            Dim SrcBuyerPerformance As String
+            Dim SrcSpecialPerformance As String
+            Dim SrcSupplierPerformance As String
+            Dim SrcSourcingCalendar As String
+            Dim SrcSupplierSpendManager As String
+            Dim SrcCostImpactCalculator As String
+            Dim SrcOpenPOReport As String
+            Dim SrcCostVarianceDashboard As String
 
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
@@ -185,10 +216,97 @@ Public Class Dashboard
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-Ops")
                     MENUDashboardOps = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
-                    'MENU-Dashboard-HuddleBoard
-                    'cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard")
-                    'MENUDashboardHB = Convert.ToString(cmdmenu.ExecuteScalar())
-                    'cmdmenu.Parameters.Clear()
+
+                    'REPORTS-Supply Chain
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Daily Management DB")
+                    SCDailyManagementDB = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Node Activity")
+                    SCNodeActivity = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Bin Activity")
+                    SCBinActivity = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Bin Velocity Report")
+                    SCBinVelocityReport = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Slow Bin Report")
+                    SCSlowBinReport = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-BlueBin Par Master")
+                    SCBlueBinParMaster = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Item Master")
+                    SCItemMaster = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Open Scans")
+                    SCOpenScans = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Order Details")
+                    SCOrderDetails = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Item Locator")
+                    SCItemLocator = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "SC-Par Valuation")
+                    SCParValuation = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+
+                    'REPORTS-Op Performance
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Supply Spend")
+                    OPSupplySpend = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Stat Calls")
+                    OPStatCalls = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Warehouse Volume")
+                    OPWarehouseVolume = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Warehouse Detail")
+                    OPWarehouseDetail = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Pick Line Volume")
+                    OPPickLineVolume = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Overall Line Volume")
+                    OPOverallLineVolume = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Kanbans Adjusted")
+                    OPKanbansAdjusted = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-QCN Dashboard")
+                    OPQCNDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Gemba Dashboard")
+                    OPGembaDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+
+                    'REPORTS-Sourcing
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Buyer Performance")
+                    SrcBuyerPerformance = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Special Performance")
+                    SrcSpecialPerformance = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Supplier Performance")
+                    SrcSupplierPerformance = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Sourcing Calendar")
+                    SrcSourcingCalendar = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Supplier Spend Manager")
+                    SrcSupplierSpendManager = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Cost Impact Calculator")
+                    SrcCostImpactCalculator = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Open PO Report")
+                    SrcOpenPOReport = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "Src-Cost Variance Dashboard")
+                    SrcCostVarianceDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+
                     conmenu.Close()
                 End Using
             End Using
@@ -199,22 +317,195 @@ Public Class Dashboard
 
 
             If MENUDashboardSC = "No" Or UserMENUDashboardSC = "No" Then
-                themes.Visible = False
+                MenuSupplyChainReports.Visible = False
             Else
-                themes.Visible = True
+                MenuSupplyChainReports.Visible = True
             End If
 
             If MENUDashboardSrc = "No" Or UserMENUDashboardSrc = "No" Then
-                download3.Visible = False
+                MenuSourcingReports.Visible = False
             Else
-                download3.Visible = True
+                MenuSourcingReports.Visible = True
             End If
 
             If MENUDashboardOps = "No" Or UserMENUDashboardOps = "No" Then
-                download2.Visible = False
+                MenuOpsReports.Visible = False
             Else
-                download2.Visible = True
+                MenuOpsReports.Visible = True
             End If
+
+            'Supply Chain Report Menus
+            If SCDailyManagementDB = "Yes" Then
+                MenuSCDailyManagementDB.Visible = True
+            Else
+                MenuSCDailyManagementDB.Visible = False
+            End If
+
+            If SCNodeActivity = "Yes" Then
+                MenuSCNodeActivity.Visible = True
+            Else
+                MenuSCNodeActivity.Visible = False
+            End If
+
+            If SCBinActivity = "Yes" Then
+                MenuSCBinActivity.Visible = True
+            Else
+                MenuSCBinActivity.Visible = False
+            End If
+
+            If SCBinVelocityReport = "Yes" Then
+                MenuSCBinVelocityReport.Visible = True
+            Else
+                MenuSCBinVelocityReport.Visible = False
+            End If
+
+            If SCSlowBinReport = "Yes" Then
+                MenuSCSlowBinReport.Visible = True
+            Else
+                MenuSCSlowBinReport.Visible = False
+            End If
+
+            If SCBlueBinParMaster = "Yes" Then
+                MenuSCBlueBinParMaster.Visible = True
+            Else
+                MenuSCBlueBinParMaster.Visible = False
+            End If
+
+            If SCItemMaster = "Yes" Then
+                MenuSCItemMaster.Visible = True
+            Else
+                MenuSCItemMaster.Visible = False
+            End If
+
+            If SCOpenScans = "Yes" Then
+                MenuSCOpenScans.Visible = True
+            Else
+                MenuSCOpenScans.Visible = False
+            End If
+
+            If SCOrderDetails = "Yes" Then
+                MenuSCOrderDetails.Visible = True
+            Else
+                MenuSCOrderDetails.Visible = False
+            End If
+
+            If SCItemLocator = "Yes" Then
+                MenuSCItemLocator.Visible = True
+            Else
+                MenuSCItemLocator.Visible = False
+            End If
+
+            If SCParValuation = "Yes" Then
+                MenuSCParValuation.Visible = True
+            Else
+                MenuSCParValuation.Visible = False
+            End If
+
+            'Op Performance Report Menus
+            If OPSupplySpend = "Yes" Then
+                MenuOPSupplySpend.Visible = True
+            Else
+                MenuOPSupplySpend.Visible = False
+            End If
+
+            If OPStatCalls = "Yes" Then
+                MenuOPStatCalls.Visible = True
+            Else
+                MenuOPStatCalls.Visible = False
+            End If
+
+            If OPWarehouseVolume = "Yes" Then
+                MenuOPWarehouseVolume.Visible = True
+            Else
+                MenuOPWarehouseVolume.Visible = False
+            End If
+
+            If OPWarehouseDetail = "Yes" Then
+                MenuOPWarehouseDetail.Visible = True
+            Else
+                MenuOPWarehouseDetail.Visible = False
+            End If
+
+            If OPPickLineVolume = "Yes" Then
+                MenuOPPickLineVolume.Visible = True
+            Else
+                MenuOPPickLineVolume.Visible = False
+            End If
+
+            If OPOverallLineVolume = "Yes" Then
+                MenuOPOverallLineVolume.Visible = True
+            Else
+                MenuOPOverallLineVolume.Visible = False
+            End If
+
+            If OPKanbansAdjusted = "Yes" Then
+                MenuOPKanbansAdjusted.Visible = True
+            Else
+                MenuOPKanbansAdjusted.Visible = False
+            End If
+
+            If OPQCNDashboard = "Yes" Then
+                MenuOPQCNDashboard.Visible = True
+            Else
+                MenuOPQCNDashboard.Visible = False
+            End If
+
+            If OPGembaDashboard = "Yes" Then
+                MenuOPGembaDashboard.Visible = True
+            Else
+                MenuOPGembaDashboard.Visible = False
+            End If
+
+
+            'Sourcing Report Menus
+            If SrcBuyerPerformance = "Yes" Then
+                MenuSrcBuyerPerformance.Visible = True
+            Else
+                MenuSrcBuyerPerformance.Visible = False
+            End If
+
+            If SrcSpecialPerformance = "Yes" Then
+                MenuSrcSpecialPerformance.Visible = True
+            Else
+                MenuSrcSpecialPerformance.Visible = False
+            End If
+
+            If SrcSupplierPerformance = "Yes" Then
+                MenuSrcSupplierPerformance.Visible = True
+            Else
+                MenuSrcSupplierPerformance.Visible = False
+            End If
+
+            If SrcSourcingCalendar = "Yes" Then
+                MenuSrcSourcingCalendar.Visible = True
+            Else
+                MenuSrcSourcingCalendar.Visible = False
+            End If
+
+            If SrcSupplierSpendManager = "Yes" Then
+                MenuSrcSupplierSpendManager.Visible = True
+            Else
+                MenuSrcSupplierSpendManager.Visible = False
+            End If
+
+            If SrcCostImpactCalculator = "Yes" Then
+                MenuSrcCostImpactCalculator.Visible = True
+            Else
+                MenuSrcCostImpactCalculator.Visible = False
+            End If
+
+            If SrcOpenPOReport = "Yes" Then
+                MenuSrcOpenPOReport.Visible = True
+            Else
+                MenuSrcOpenPOReport.Visible = False
+            End If
+
+            If SrcCostVarianceDashboard = "Yes" Then
+                MenuSrcCostVarianceDashboard.Visible = True
+            Else
+                MenuSrcCostVarianceDashboard.Visible = False
+            End If
+
 
             'If MENUDashboardHB = "No" Or UserMENUDashboardHB = "No" Then
             'HuddleBoardDD.Visible = False

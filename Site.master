@@ -89,7 +89,7 @@
                                   <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="ScanningDD">Scanning<span class="caret"></span></a>
                                   <ul class="dropdown-menu" aria-labelledby="themes">
 							                    <li><a runat="server" href="~/Scans">Scanning Home</a></li>
-                                                <li><a runat="server" href="~/ScanLines">New Scanning Batch</a></li>     
+                                                <li><a runat="server" href="~/ScanOrder">New Scanning Batch</a></li>     
                                   </ul>
                                 </li>
                         <li class="dropdown">

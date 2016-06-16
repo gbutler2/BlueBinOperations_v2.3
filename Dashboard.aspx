@@ -29,54 +29,54 @@
           <ul class="nav navbar-nav">
 		    <li><a runat="server" href="~/">Home</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="themes">Supply Chain <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
+              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="MenuSupplyChainReports">Supply Chain <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="SupplyChainReports">
 							<%-- <li><asp:Label runat="server" ID="URLLabel"></asp:Label></li>--%>
-                            <li><a href="#" onClick="switchView('Daily Management Dashboard')">Daily Management Dashboard</a></li>
+                            <li><a href="#" runat="server" id="MenuSCDailyManagementDB" onClick="switchView('Daily Management Dashboard')">Daily Management Dashboard</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('Node Activity')">Node Activity</a></li>
-							<li><a href="#" onClick="switchView('BlueBin Activity Report')">Bin Activity</a></li>
-                            <li><a href="#" onClick="switchView('Bin Velocity Report')">Bin Velocity Report</a></li>
-                            <li><a href="#" onClick="switchView('Slow Bin Report')">Slow Bin Report</a></li>
+                            <li><a href="#" runat="server" id="MenuSCNodeActivity" onClick="switchView('Node Activity')">Node Activity</a></li>
+							<li><a href="#" runat="server" id="MenuSCBinActivity" onClick="switchView('BlueBin Activity Report')">Bin Activity</a></li>
+                            <li><a href="#" runat="server" id="MenuSCBinVelocityReport" onClick="switchView('Bin Velocity Report')">Bin Velocity Report</a></li>
+                            <li><a href="#" runat="server" id="MenuSCSlowBinReport" onClick="switchView('Slow Bin Report')">Slow Bin Report</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('BlueBin Par Master')">BlueBin Par Master</a></li>
-                            <li><a href="#" onClick="switchView('Item Master Report')">Item Master</a></li> 
+                            <li><a href="#" runat="server" id="MenuSCBlueBinParMaster" onClick="switchView('BlueBin Par Master')">BlueBin Par Master</a></li>
+                            <li><a href="#" runat="server" id="MenuSCItemMaster" onClick="switchView('Item Master Report')">Item Master</a></li> 
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('Open Scans')">Open Scans</a></li>
-							<li><a href="#" onClick="switchView('Order Details')">Order Details</a></li>
+                            <li><a href="#" runat="server" id="MenuSCOpenScans" onClick="switchView('Open Scans')">Open Scans</a></li>
+							<li><a href="#" runat="server" id="MenuSCOrderDetails" onClick="switchView('Order Details')">Order Details</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('Item Locator')">Item Locator</a></li>
-                            <li><a href="#" onClick="switchView('Par Valuation Report')">Par Valuation</a></li>   
+                            <li><a href="#" runat="server" id="MenuSCItemLocator" onClick="switchView('Item Locator')">Item Locator</a></li>
+                            <li><a href="#" runat="server" id="MenuSCParValuation" onClick="switchView('Par Valuation Report')">Par Valuation</a></li>   
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="download2">Operational Performance <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download2">
-                            <li><a href="#" onClick="switchView('Supply Spend')">Supply Spend</a></li>
-                            <li><a href="#" onClick="switchView('Stat Calls')">Stat Calls</a></li>
-                            <li><a href="#" onClick="switchView('Warehouse Value')">Warehouse Volume</a></li>
-                            <li><a href="#" onClick="switchView('Warehouse Size')">Warehouse Detail</a></li>
-                            <li><a href="#" onClick="switchView('Pick Line Volume')">Pick Line Volume</a></li>
-                            <li><a href="#" onClick="switchView('Overall Line Volume')">Overall Line Volume</a></li>
-                            <li><a href="#" onClick="switchView('Kanbans Adjusted')">Kanbans Adjusted</a></li>
+              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="MenuOpsReports">Operational Performance <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="OpsReports">
+                            <li><a href="#" runat="server" id="MenuOPSupplySpend" onClick="switchView('Supply Spend')">Supply Spend</a></li>
+                            <li><a href="#" runat="server" id="MenuOPStatCalls" onClick="switchView('Stat Calls')">Stat Calls</a></li>
+                            <li><a href="#" runat="server" id="MenuOPWarehouseVolume" onClick="switchView('Warehouse Value')">Warehouse Volume</a></li>
+                            <li><a href="#" runat="server" id="MenuOPWarehouseDetail" onClick="switchView('Warehouse Size')">Warehouse Detail</a></li>
+                            <li><a href="#" runat="server" id="MenuOPPickLineVolume" onClick="switchView('Pick Line Volume')">Pick Line Volume</a></li>
+                            <li><a href="#" runat="server" id="MenuOPOverallLineVolume" onClick="switchView('Overall Line Volume')">Overall Line Volume</a></li>
+                            <li><a href="#" runat="server" id="MenuOPKanbansAdjusted" onClick="switchView('Kanbans Adjusted')">Kanbans Adjusted</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('QCN Dashboard')">QCN Dashboard</a></li>
-                            <li><a href="#" onClick="switchView('Gemba Dashboard')">Gemba Dashboard</a></li>
+                            <li><a href="#" runat="server" id="MenuOPQCNDashboard" onClick="switchView('QCN Dashboard')">QCN Dashboard</a></li>
+                            <li><a href="#" runat="server" id="MenuOPGembaDashboard" onClick="switchView('Gemba Dashboard')">Gemba Dashboard</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="download3">Strategic Sourcing <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download3">
-                			<li><a href="#" onClick="switchView('Buyer Performance Dashboard')">Buyer Performance</a></li>
-                            <li><a href="#" onClick="switchView('Specials Dashboard')">Special Performance</a></li>
-                            <li><a href="#" onClick="switchView('Supplier Performance Dashboard')">Supplier Performance</a></li>
-                            <li><a href="#" onClick="switchView('Sourcing Calendar')">Sourcing Calendar (Contracts Dashboard)</a></li>
-                            <li><a href="#" onClick="switchView('Supplier Spend Manager')">Supplier Spend Manager</a></li>
-                            <li><a href="#" onClick="switchView('Item Cost Impact Dashboard')">Cost Impact Calculator</a></li>
+              <a class="dropdown-toggle" runat="server" data-toggle="dropdown" href="#" id="MenuSourcingReports">Strategic Sourcing <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="SourcingReports">
+                			<li><a href="#" runat="server" id="MenuSrcBuyerPerformance" onClick="switchView('Buyer Performance Dashboard')">Buyer Performance</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcSpecialPerformance" onClick="switchView('Specials Dashboard')">Special Performance</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcSupplierPerformance" onClick="switchView('Supplier Performance Dashboard')">Supplier Performance</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcSourcingCalendar" onClick="switchView('Sourcing Calendar')">Sourcing Calendar (Contracts Dashboard)</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcSupplierSpendManager" onClick="switchView('Supplier Spend Manager')">Supplier Spend Manager</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcCostImpactCalculator" onClick="switchView('Item Cost Impact Dashboard')">Cost Impact Calculator</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('Open PO Report')">Open PO Report</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcOpenPOReport" onClick="switchView('Open PO Report')">Open PO Report</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onClick="switchView('Cost Variance Dashboard')">Cost Variance Dashboard</a></li>
+                            <li><a href="#" runat="server" id="MenuSrcCostVarianceDashboard" onClick="switchView('Cost Variance Dashboard')">Cost Variance Dashboard</a></li>
                             
                             
               </ul>

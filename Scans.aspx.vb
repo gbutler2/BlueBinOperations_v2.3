@@ -17,12 +17,17 @@ Partial Class Scans
         'GridViewScan.DataSource = SqlDataSourceScan
 
         GridViewScan.DataBind()
-            GridViewScanLines.DataBind()
+
         'End If
     End Sub
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles NewScanBatch.Click
-        Response.Redirect("~/ScanLines")
+    Protected Sub NewScanBatch_Click(sender As Object, e As EventArgs) Handles NewScanBatch.Click
+        Response.Redirect("~/ScanOrder")
+        GridViewScan.DataBind()
+    End Sub
+
+    Protected Sub NewScanBatchReceive_Click(sender As Object, e As EventArgs) Handles NewScanBatchReceive.Click
+        Response.Redirect("~/ScanReceive")
         GridViewScan.DataBind()
     End Sub
 
