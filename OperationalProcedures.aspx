@@ -34,6 +34,11 @@
                                 <asp:Label ID = "UpdatedL" Text ='<%#"Updated: " + Eval("LastUpdated", "{0:d}").ToString()%>'  runat = "server"  DataFormatString="{0:d}"/>
                             </ItemTemplate>
                         </asp:TemplateField> 
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="lnkDelete" CommandArgument = '<%# Eval("DocumentID") %>' runat="server"  CausesValidation="False" OnClick = "DeleteFile" OnClientClick="return confirm('Are you sure you want to remove this document?');">Delete</asp:LinkButton>             
+                            </ItemTemplate>
+                        </asp:TemplateField>
              
                     </Columns>
                     
@@ -112,7 +117,11 @@
                                 <asp:Label ID = "UpdatedL" Text ='<%#"Updated: " + Eval("LastUpdated", "{0:d}").ToString()%>'  runat = "server"  DataFormatString="{0:d}"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="lnkDelete" CommandArgument = '<%# Eval("DocumentID") %>' runat="server"  CausesValidation="False" OnClick = "DeleteFile" OnClientClick="return confirm('Are you sure you want to remove this document?');">Delete</asp:LinkButton>             
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     
                     <FooterStyle BackColor="#333333" ForeColor="Black" />
@@ -153,7 +162,11 @@
                                 <asp:Label ID = "UpdatedL" Text ='<%#"Updated: " + Eval("LastUpdated", "{0:d}").ToString()%>'  runat = "server"  DataFormatString="{0:d}"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="lnkDelete" CommandArgument = '<%# Eval("DocumentID") %>' runat="server"  CausesValidation="False" OnClick = "DeleteFile" OnClientClick="return confirm('Are you sure you want to remove this document?');">Delete</asp:LinkButton>             
+                            </ItemTemplate>
+                        </asp:TemplateField>                       
                     </Columns>
                     
                     <FooterStyle BackColor="#333333" ForeColor="Black" />
@@ -194,7 +207,11 @@
                                 <asp:Label ID = "UpdatedL" Text ='<%#"Updated: " + Eval("LastUpdated", "{0:d}").ToString()%>'  runat = "server"  DataFormatString="{0:d}"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="lnkDelete" CommandArgument = '<%# Eval("DocumentID") %>' runat="server"  CausesValidation="False" OnClick = "DeleteFile" OnClientClick="return confirm('Are you sure you want to remove this document?');">Delete</asp:LinkButton>             
+                            </ItemTemplate>
+                        </asp:TemplateField>                        
                     </Columns>
                     
                     <FooterStyle BackColor="#333333" ForeColor="Black" />

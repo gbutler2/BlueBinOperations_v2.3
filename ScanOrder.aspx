@@ -1222,8 +1222,8 @@
 
 <asp:TableRow Height="10"></asp:TableRow>
  <asp:TableRow>
-     <asp:TableCell><asp:Button ID="ScanSubmit" runat="server" Text="Submit Batch"  OnClientClick="return confirm('Are you sure you want to submit this scanning?');" AccessKey="@" />&nbsp;
-     <asp:Button ID="ScanningCancel" CausesValidation="false" runat="server" Text="Cancel" /><br /></asp:TableCell>
+     <asp:TableCell><asp:Button ID="ScanSubmit" runat="server" Text="Submit Batch"  OnClientClick="return confirm('Are you sure you want to submit this scanning?');" AccessKey="@"  class="btn btn-primary btn-lg"/>&nbsp;
+     <asp:Button ID="ScanningCancel" CausesValidation="false" runat="server" Text="Cancel" class="btn btn-primary btn-lg" /><br /></asp:TableCell>
  </asp:TableRow>       
       
 </asp:Table>

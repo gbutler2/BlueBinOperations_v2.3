@@ -477,9 +477,9 @@
  <asp:TableRow Height="10"></asp:TableRow>
  <asp:TableRow>
      <asp:TableCell>
-         <asp:Button ID="GembaAuditNodeFormSubmit" runat="server" Text="Submit" />&nbsp;
-         <asp:Button ID="GembaAuditNodeFormCancel" runat="server" Text="Cancel" CausesValidation="false"/>&nbsp;
-         <asp:Button ID="GembaAuditNodeFormCalculate" runat="server" Text="Calculate" />&nbsp;
+         <asp:Button ID="GembaAuditNodeFormSubmit" runat="server" Text="Submit"  class="btn btn-primary btn-lg"/>&nbsp;
+         <asp:Button ID="GembaAuditNodeFormCancel" runat="server" Text="Cancel" CausesValidation="false" class="btn btn-primary btn-lg"/>&nbsp;
+         <asp:Button ID="GembaAuditNodeFormCalculate" runat="server" Text="Calculate"  class="btn btn-primary btn-lg"/>&nbsp;
          <br /></asp:TableCell></asp:TableRow>  
     
     

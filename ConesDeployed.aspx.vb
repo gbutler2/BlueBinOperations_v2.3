@@ -60,10 +60,16 @@ Partial Class ConesDeployed
         Dim Location As String
         Dim Item As String
         Dim Facility As String
+        Dim ExpectedDelivery As String
+        Dim SubProduct As String
+        Dim Details As String
 
         Facility = FacilityDD.SelectedItem.Value
         Location = LocationDD.SelectedItem.Value
         Item = ClinicalDescriptionDD.SelectedItem.Value
+        ExpectedDelivery = ExpectedDeliveryTB.Text
+        Details = DetailsTB.Text
+        SubProduct = SubProductDD.SelectedItem.Value
 
         cmd.CommandType = System.Data.CommandType.Text
 
@@ -71,7 +77,10 @@ Partial Class ConesDeployed
                 exec sp_InsertConesDeployed
                 '" & Facility & "',
                 '" & Location & "',
-                '" & Item & "'
+                '" & Item & "',
+                '" & ExpectedDelivery & "',
+                '" & SubProduct & "',
+                '" & Details & "'
 "
         cmd.ExecuteNonQuery()
 
@@ -128,6 +137,19 @@ Partial Class ConesDeployed
     End Sub
 
 
+    Protected Sub OnRowDataBound(sender As Object, e As GridViewRowEventArgs)
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim cellUpdates As TableCell = e.Row.Cells(14)
+            cellUpdates.ToolTip = TryCast(e.Row.DataItem, DataRowView)("DetailsText").ToString()
+        End If
+
+    End Sub
+
+
+    Protected Sub OnPageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        GridViewCones.PageIndex = e.NewPageIndex
+        GridViewCones.DataBind()
+    End Sub
     Public Overrides Sub VerifyRenderingInServerForm(control As Control)
         ' Verifies that the control is rendered
     End Sub

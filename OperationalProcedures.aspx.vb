@@ -76,10 +76,17 @@ Partial Public Class OperationalProcedures
 
             If UserDocUploadOther = "Yes" Then
                 UploadUtility.Visible = True
+                GridViewSOPs.Columns(10).Visible = True
+                GridViewFormsSignage.Columns(10).Visible = True
+                GridViewBeltCertification.Columns(10).Visible = True
+                GridViewOther.Columns(10).Visible = True
 
             Else
                 UploadUtility.Visible = False
-
+                GridViewSOPs.Columns(10).Visible = False
+                GridViewFormsSignage.Columns(10).Visible = False
+                GridViewBeltCertification.Columns(10).Visible = False
+                GridViewOther.Columns(10).Visible = False
             End If
 
 

@@ -7,7 +7,7 @@
 <asp:TableCell Width="900px">  
     
     <p>
-        <asp:Button ID="NewHardware" runat="server" Text="New Hardware Order" /> 
+        <asp:Button ID="NewHardware" runat="server" Text="New Hardware Order"  class="btn btn-primary btn-lg"/> 
     </p>
     <p>
     <p>

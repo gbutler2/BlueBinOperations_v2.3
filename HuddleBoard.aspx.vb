@@ -114,7 +114,7 @@ Partial Public Class HuddleBoard
             Dim TableaURLDB As String = dt.Rows(0)("ConfigValue").ToString()
 
         'TableauFullURL = "http://intelligence.bluebin.com/t" & TableaURLDB & "Home"
-        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/HB-" & TableauWorkbook & "/HuddleBoard"
+        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/HB-" & TableauWorkbook & "/HuddleBoard&:toolbar=no&:toolbar=bottom"
 
         con.Close()
         'End If

@@ -24,7 +24,7 @@
 <asp:Table ID="PageTable" runat="server" Width="1050px" >
 <asp:TableRow><asp:TableCell><h2>Receive Previously Scanned Items</h2></asp:TableCell></asp:TableRow>
 <asp:TableRow>
-    <asp:TableCell Width="1050px"  BorderColor="#032169" BorderStyle="Solid" BorderWidth="1" BackColor="#eeeeee">
+    <asp:TableCell Width="1050px"  BorderColor="#CC0000" BorderStyle="Solid" BorderWidth="1" BackColor="#eeeeee">
 
         <asp:Table ID="Table3" runat="server" CellPadding="10" Width="350px" BorderWidth="10" BorderColor="#eeeeee" BackColor="#eeeeee">
             <asp:TableRow Height="10">
@@ -1222,8 +1222,9 @@
 
 <asp:TableRow Height="10"></asp:TableRow>
  <asp:TableRow>
-     <asp:TableCell><asp:Button ID="ScanSubmit" runat="server" Text="Submit Receipt Batch"  OnClientClick="return confirm('Are you sure you want to submit this scanning receipt?');" AccessKey="@" />&nbsp;
-     <asp:Button ID="ScanningCancel" CausesValidation="false" runat="server" Text="Cancel" /><br /></asp:TableCell>
+     <asp:TableCell><asp:Button ID="ScanSubmit" runat="server" Text="Submit Receipt Batch"  OnClientClick="return confirm('Are you sure you want to submit this scanning receipt?');" AccessKey="@"  class="btn btn-primary btn-lg"/>&nbsp;
+     <asp:Button ID="ScanningCancel" CausesValidation="false" runat="server" Text="Cancel"  class="btn btn-primary btn-lg"/>
+       <br /></asp:TableCell>
  </asp:TableRow>       
       
 </asp:Table>

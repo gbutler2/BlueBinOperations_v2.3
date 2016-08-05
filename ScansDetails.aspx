@@ -7,7 +7,7 @@
 <asp:TableCell Width="900px">  
     
 
-    <h2>Scan Orders</h2> 
+    <h3>Scan Orders</h3> 
 
 
             <p>
@@ -15,7 +15,7 @@
                     <AlternatingRowStyle BackColor="#DCDCDC" />
 
                     <Columns>
-                        <asp:BoundField DataField="ScanBatchID" HeaderText="ScanBatchID" SortExpression="ScanBatchID" Visible="False" />
+                        <asp:BoundField DataField="ScanBatchID" HeaderText="ScanBatchID" SortExpression="ScanBatchID"  />
                         <asp:BoundField DataField="BinKey" HeaderText="BinKey" SortExpression="BinKey" Visible="False" />
                         <asp:BoundField DataField="Line" HeaderText="Line" SortExpression="Line"/>
                         <asp:BoundField DataField="BinSequence" HeaderText="BinSequence" SortExpression="BinSequence" />
@@ -23,8 +23,11 @@
                         <asp:BoundField DataField="LocationName" HeaderText="LocationName" SortExpression="LocationName" />
                         <asp:BoundField DataField="ItemID" HeaderText="ItemID" SortExpression="ItemID" />
                         <asp:BoundField DataField="ItemDescription" HeaderText="Item Description" SortExpression="ItemDescription" />
+                        <asp:BoundField DataField="Bin" HeaderText="Bin" SortExpression="Bin" />
                         <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                         <asp:BoundField DataField="DateScanned" HeaderText="Scanned" SortExpression="DateScanned" />
+                        <asp:BoundField DataField="ScannedBy" HeaderText="Scanned By" SortExpression="ScannedBy" />
+                        <asp:BoundField DataField="Origin" HeaderText="Origin" SortExpression="Origin"/>
                         <asp:BoundField DataField="Extracted" HeaderText="Extracted" SortExpression="Extracted"/>
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -47,7 +50,7 @@
 <asp:TableCell Width="900px">  
     
 
-    <h2>Scan Receive</h2> 
+    <h3>Scan Receive</h3> 
 
 
             <p>
@@ -55,7 +58,7 @@
                     <AlternatingRowStyle BackColor="#DCDCDC" />
 
                     <Columns>
-                        <asp:BoundField DataField="ScanBatchID" HeaderText="ScanBatchID" SortExpression="ScanBatchID" Visible="False" />
+                        <asp:BoundField DataField="ScanBatchID" HeaderText="ScanBatchID" SortExpression="ScanBatchID"  />
                         <asp:BoundField DataField="BinKey" HeaderText="BinKey" SortExpression="BinKey" Visible="False" />
                         <asp:BoundField DataField="Line" HeaderText="Line" SortExpression="Line" Visible="False" />
                         <asp:BoundField DataField="BinSequence" HeaderText="BinSequence" SortExpression="BinSequence" Visible="False"  />
@@ -65,6 +68,7 @@
                         <asp:BoundField DataField="ItemDescription" HeaderText="Item Description" SortExpression="ItemDescription" />
                         <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                         <asp:BoundField DataField="DateScanned" HeaderText="Scanned" SortExpression="DateScanned" />
+                        <asp:BoundField DataField="ScannedBy" HeaderText="Received By" SortExpression="ScannedBy" />
                         
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />

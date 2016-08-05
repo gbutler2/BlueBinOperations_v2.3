@@ -51,7 +51,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="Button1"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="ParMasterInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddParMaster"  CommandName="ParMasterInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="ParMasterInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddParMaster"  CommandName="ParMasterInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
             
             <asp:TemplateField HeaderText="ParMasterID" InsertVisible="False" SortExpression="ParMasterID" Visible ="False">
@@ -319,7 +319,7 @@
                 <ItemTemplate>
                     <asp:Button runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="Button1"></asp:Button>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="ItemInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddItem"  CommandName="ItemInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="ItemInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddItem"  CommandName="ItemInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="ItemKey" InsertVisible="False" SortExpression="ItemKey" Visible="False">
@@ -529,7 +529,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="EditLocationB"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="LocationInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddLocation"  CommandName="LocationInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="LocationInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddLocation"  CommandName="LocationInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
                       <asp:TemplateField HeaderText="LocationKey" InsertVisible="False" SortExpression="LocationKey" Visible="False">

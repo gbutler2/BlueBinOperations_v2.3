@@ -88,8 +88,9 @@
                         <li class="dropdown">
                                   <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="ScanningDD">Scanning<span class="caret"></span></a>
                                   <ul class="dropdown-menu" aria-labelledby="themes">
-							                    <li><a runat="server" href="~/Scans">Scanning Home</a></li>
-                                                <li><a runat="server" href="~/ScanOrder">New Scanning Batch</a></li>     
+							                    <li><a runat="server" href="~/Scans">Scanning Module Home</a></li>
+                                                <li><a runat="server" href="~/ScanOrder">New Scanning Order</a></li>
+                                                <li><a runat="server" href="~/ScanReceive" id ="ScanReceiveDD">New Scanning Receive</a></li>     
                                   </ul>
                                 </li>
                         <li class="dropdown">
@@ -111,6 +112,7 @@
                                                 <li><a runat="server" href="~/BlueBinParMaster" onClick="switchView('ParMaster')" id="ADMINPARMASTERDD">BlueBin ParMaster</a></li>
                                                 <li><a runat="server" href="~/Resources" onClick="switchView('Resources')" id="ADMINRESOURCESDD">DMS Resources</a></li>
                                                 <li><a runat="server" href="~/Training" onClick="switchView('Training')" id="ADMINTRAININGDD">Training</a></li>
+                                                <%--<li><a runat="server" href="~/AHRMM.aspx" id="AHRMMDD">AHRMM</a></li> --%>
                                                 
                                   </ul>
                                 </li>

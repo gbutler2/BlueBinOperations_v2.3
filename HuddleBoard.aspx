@@ -16,7 +16,7 @@
 </head>
 
     <body>
-
+        <footer><a href="#" onClick="RefreshReport()" style="font-size:x-small;">Refresh Report Data</a></footer>
     </body>
     <script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.min.js"></script>
         <script>
@@ -63,6 +63,9 @@ var downloadWorkbook = function(){
 
 var shareViz = function(){
 	viz.showShareDialog();
+}
+var RefreshReport = function () {
+    viz.refreshDataAsync();
 }
 setInterval(function () { viz.refreshDataAsync() }, 1800000);
 </script>

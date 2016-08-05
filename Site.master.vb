@@ -66,6 +66,7 @@ Partial Public Class SiteMaster
             Dim MENUADMINPARMASTER As String
             Dim UserMENUCones As String
             Dim MENUCones As String
+            Dim ScanReceiveOptions As String
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
             Using conroles As New SqlConnection(constr)
@@ -211,6 +212,10 @@ Partial Public Class SiteMaster
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Scanning")
                     MENUScanning = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
+                    'MENU-Scanning-Receive
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Scanning-Receive")
+                    ScanReceiveOptions = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
                     'MENU-Cones
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Cones")
                     MENUCones = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -308,6 +313,13 @@ Partial Public Class SiteMaster
             Else
                 ScanningDD.Visible = True
             End If
+
+            If ScanReceiveOptions = "Yes" Then
+                ScanReceiveDD.Visible = True
+            Else
+                ScanReceiveDD.Visible = False
+            End If
+
 
             If MENUHardware = "No" Or UserMENUHardware = "No" Then
                 HardwareDD.Visible = False

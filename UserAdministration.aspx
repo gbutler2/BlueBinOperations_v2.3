@@ -42,7 +42,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="Button1"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="UsersInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddUsers"  CommandName="UsersInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="UsersInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddUsers"  CommandName="UsersInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="BlueBinUserID">
                 <EditItemTemplate>
@@ -122,7 +122,7 @@
                 <FooterTemplate><asp:TextBox runat="server" Width="80px" ID="Title"></asp:TextBox></FooterTemplate>
                 <ItemStyle Wrap="False" Width="50px"></ItemStyle>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ERP UID" SortExpression="ERPUser">
+            <asp:TemplateField HeaderText="ERP UID" SortExpression="ERPUser" Visible="False">
                 <EditItemTemplate>
                     <asp:TextBox runat="server" Width="80px" Text='<%# Bind("ERPUser") %>' ID="ERPUserTB"></asp:TextBox>
                 </EditItemTemplate>
@@ -132,7 +132,24 @@
                 <FooterTemplate><asp:TextBox runat="server" Width="80px" ID="ERPUser"></asp:TextBox></FooterTemplate>
                 <ItemStyle Wrap="False" Width="50px"></ItemStyle>
             </asp:TemplateField>
-             <asp:TemplateField HeaderText="GembaTier" SortExpression="GembaTier">
+             <asp:TemplateField HeaderText="QCN Assignable" SortExpression="AssignToQCN">
+                <EditItemTemplate>
+                    <asp:DropDownList runat="server"  AutoPostBack="False" ID="AssignToQCNDDE" SelectedValue=<%#Bind("AssignToQCN")%>>
+                        <asp:ListItem Value="1">Yes</asp:ListItem>
+                        <asp:ListItem Value="0">No</asp:ListItem>
+                    </asp:DropDownList>
+                 </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label runat="server" Text='<%# Bind("AssignToQCNName") %>' ID="ITAssignToQCNL"></asp:Label>
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:DropDownList runat="server"  AutoPostBack="False" ID="AssignToQCNDDF">
+                        <asp:ListItem Value="0" Selected="True">No</asp:ListItem>
+                        <asp:ListItem Value="1">Yes</asp:ListItem>
+                    </asp:DropDownList>
+                </FooterTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="GembaTier" SortExpression="GembaTier">
                 <EditItemTemplate><asp:DropDownList runat="server"  AutoPostBack="False" ID="GembaTierDDE" SelectedValue=<%#Bind("GembaTier")%>>
                         <asp:ListItem Value=""></asp:ListItem>
                         <asp:ListItem Value="Tier1">Tier1</asp:ListItem>
@@ -265,7 +282,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="ITRolesB"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="RolesInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddRoles"  CommandName="RolesInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="RolesInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddRoles"  CommandName="RolesInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="RoleID"  Visible="false">
@@ -318,7 +335,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="ITOperationsB"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="OperationsInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddOperations"  CommandName="OperationsInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="OperationsInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddOperations"  CommandName="OperationsInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="OpID" InsertVisible="False" SortExpression="OpID"  Visible="false">
@@ -380,7 +397,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CausesValidation="False" ID="ITRoleOperationsB" OnClientClick="return confirm('Are you sure you want to delete this entry?');"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="RoleOperationsInsert" runat="server" Text="Add"  CommandName="RoleOperationsInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="RoleOperationsInsert" runat="server" Text="Add"  CommandName="RoleOperationsInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
 	    <asp:TemplateField HeaderText="RoleID" InsertVisible="False" SortExpression="RoleID" Visible="False">
@@ -448,7 +465,7 @@
                 <ItemTemplate>
                     <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CausesValidation="False" ID="ITUserOperationsB" OnClientClick="return confirm('Are you sure you want to delete this entry?');"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="UserOperationsInsert" runat="server" Text="Add"  CommandName="UserOperationsInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="UserOperationsInsert" runat="server" Text="Add"  CommandName="UserOperationsInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
 	<asp:TemplateField HeaderText="BlueBinUserID" InsertVisible="False" SortExpression="BlueBinUserID" Visible="False">
@@ -522,7 +539,7 @@
             SelectCommand="exec sp_SelectUsers @Name" 
             UpdateCommand="exec sp_EditUser @BlueBinUserID,@UserLogin,
             @FirstName,@LastName,@MiddleName,@Active,@Email,
-            @MustChangePassword,@PasswordExpires,@Password,@RoleName,@Title,@GembaTier,@ERPUser">
+            @MustChangePassword,@PasswordExpires,@Password,@RoleName,@Title,@GembaTier,@ERPUser,@AssignToQCN">
         <DeleteParameters>
             <asp:Parameter Name="BlueBinUserID" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="UserLogin" Type="String"></asp:Parameter>
@@ -533,6 +550,7 @@
             <asp:Parameter Name="MiddleName" Type="String"></asp:Parameter>
             <asp:Parameter Name="Active"></asp:Parameter>
             <asp:Parameter Name="GembaTier"></asp:Parameter>
+            <asp:Parameter Name="AssignToQCN"></asp:Parameter>
             <asp:Parameter Name="ERPUser"></asp:Parameter>
             <asp:Parameter Name="Email" Type="String"></asp:Parameter>
             <asp:Parameter Name="MustChangePassword" Type="Int32"></asp:Parameter>

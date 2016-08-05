@@ -128,6 +128,7 @@ Partial Class UserAdministration
             Dim txtTitle As TextBox = DirectCast(GridViewUsers.FooterRow.FindControl("Title"), TextBox)
             Dim txtGembaTier As String = TryCast(GridViewUsers.FooterRow.FindControl("GembaTierDDF"), DropDownList).SelectedItem.Value
             Dim txtERPUser As TextBox = DirectCast(GridViewUsers.FooterRow.FindControl("ERPUser"), TextBox)
+            Dim txtAssignToQCN As String = TryCast(GridViewUsers.FooterRow.FindControl("AssignToQCNDDF"), DropDownList).SelectedItem.Value
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
             Using con As New SqlConnection(constr)
@@ -142,6 +143,7 @@ Partial Class UserAdministration
                     cmd.Parameters.AddWithValue("@Title", txtTitle.Text)
                     cmd.Parameters.AddWithValue("@GembaTier", txtGembaTier)
                     cmd.Parameters.AddWithValue("@ERPUser", txtERPUser.Text)
+                    cmd.Parameters.AddWithValue("@AssignToQCN", txtAssignToQCN)
                     cmd.Connection = con
                     con.Open()
                     'cmd.ExecuteNonQuery()
@@ -172,7 +174,7 @@ Partial Class UserAdministration
                 Dim addr() As String = txtUserLogin.Text.Split(", ")
                 Try
                     Mail.From = New MailAddress("support@BlueBin.com",
-                        "BlueBin Operations Application", System.Text.Encoding.UTF8)
+                        "BlueBin DMS Application - " & SiteAddress, System.Text.Encoding.UTF8)
                     Dim i As Byte
                     For i = 0 To addr.Length - 1
 
@@ -181,7 +183,7 @@ Partial Class UserAdministration
                     Mail.[To].Add(New MailAddress(txtUserLogin.Text))
                     Mail.CC.Add(New MailAddress("support@bluebin.com"))
                     Mail.Bcc.Add(New MailAddress("gbutler@bluebin.com"))
-                    Mail.Subject = "New BlueBin Account - " & txtUserLogin.Text
+                    Mail.Subject = "New BlueBin DMS Account - " & txtUserLogin.Text
                     Mail.IsBodyHtml = True
                     Mail.Body = "<html>
                                     <head>
@@ -210,7 +212,7 @@ Partial Class UserAdministration
                                     <b>Date:</b> " & DateTime.Now.ToString("MM/dd/yyyy") &
                                     "<br /><br /><b>BlueBin Site:</b> https://dms.bluebin.com/" & SiteAddress &
                                     "<br /><br />Hello " & txtFirstName.Text & " " & txtLastName.Text & "," &
-                                    "<br /><br />You are receiving this email as the result of a New Account created for you at your BlueBin.com site.  
+                                    "<br /><br />You are receiving this email as the result of a New Account created for you at your BlueBin DMS Application site.  
                                     <br /><br />Your new account information is below. Please enter your Password at the Login screen and you will be prompted to change the password to a new one on successful entry.
                                     <br /><br />Thank you and have a great day!" &
                                         "<br /><br />

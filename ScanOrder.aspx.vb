@@ -33,7 +33,7 @@ Partial Class ScanOrder
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.AddWithValue("@Location", LocationDD.SelectedValue)
                 cmd.Parameters.AddWithValue("@Scanner", ScannerTB.Text)
-                cmd.Parameters.AddWithValue("@ScanType", "Order")
+                cmd.Parameters.AddWithValue("@ScanType", "ScanOrder")
                 cmd.Connection = con
                 con.Open()
                 'cmd.ExecuteNonQuery()

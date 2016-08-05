@@ -12,46 +12,33 @@ Partial Class SiteConfiguration
         GridViewConfig.Visible = True
         GridViewQCNType.Visible = False
         GridViewQCNStatus.Visible = False
+        GridViewQCNComplexity.Visible = False
         GridViewConfig.DataBind()
         hiddenConfig.Visible = True
         hiddenQCNType.Visible = False
         hiddenQCNStatus.Visible = False
+        hiddenQCNComplexity.Visible = False
         ConfigSearch.Visible = True
     End Sub
 
-    Protected Sub QCNTypeConfigB_Click(sender As Object, e As EventArgs) Handles QCNTypeConfigB.Click
+    Protected Sub QCNTypeConfigB_Click(sender As Object, e As EventArgs) Handles QCNConfigB.Click
         GridViewConfig.Visible = False
         GridViewQCNType.Visible = True
-        GridViewQCNStatus.Visible = False
+        GridViewQCNStatus.Visible = True
+        GridViewQCNComplexity.Visible = True
         GridViewQCNType.DataBind()
+        GridViewQCNComplexity.DataBind()
+        GridViewQCNStatus.DataBind()
         hiddenQCNType.Visible = True
         hiddenConfig.Visible = False
-        hiddenQCNStatus.Visible = False
+        hiddenQCNStatus.Visible = True
+        hiddenQCNComplexity.Visible = True
         ConfigSearch.Visible = False
     End Sub
 
-    Protected Sub QCNStatusConfigB_Click(sender As Object, e As EventArgs) Handles QCNStatusConfigB.Click
-        GridViewConfig.Visible = False
-        GridViewQCNType.Visible = False
-        GridViewQCNStatus.Visible = True
-        GridViewQCNStatus.DataBind()
-        hiddenQCNStatus.Visible = True
-        hiddenConfig.Visible = False
-        hiddenQCNType.Visible = False
-        ConfigSearch.Visible = False
-    End Sub
 
-    Protected Sub AllConfigB_Click(sender As Object, e As EventArgs) Handles AllConfigB.Click
-        GridViewConfig.Visible = True
-        GridViewQCNType.Visible = True
-        GridViewQCNStatus.Visible = True
-        GridViewQCNType.DataBind()
-        GridViewQCNStatus.DataBind()
-        hiddenConfig.Visible = True
-        hiddenQCNType.Visible = True
-        hiddenQCNStatus.Visible = True
-        ConfigSearch.Visible = True
-    End Sub
+
+
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
@@ -62,6 +49,7 @@ Partial Class SiteConfiguration
             GridViewConfig.Visible = True
             GridViewQCNType.Visible = False
             GridViewQCNStatus.Visible = False
+            GridViewQCNComplexity.Visible = False
             ConfigSearch.Visible = True
         End If
     End Sub
@@ -89,8 +77,9 @@ Partial Class SiteConfiguration
             Dim ad As New SqlDataAdapter()
             Dim cmd As New SqlCommand()
             Dim txtName As TextBox = DirectCast(GridViewQCNType.FooterRow.FindControl("Name"), TextBox)
+            Dim txtDescription As TextBox = DirectCast(GridViewQCNType.FooterRow.FindControl("Description"), TextBox)
             cmd.Connection = conn
-            cmd.CommandText = "exec sp_InsertQCNType '" + txtName.Text & "'"
+            cmd.CommandText = "exec sp_InsertQCNType '" + txtName.Text & "','" + txtDescription.Text & "'"
             conn.Open()
             cmd.ExecuteNonQuery()
             conn.Close()
@@ -104,12 +93,29 @@ Partial Class SiteConfiguration
             Dim ad As New SqlDataAdapter()
             Dim cmd As New SqlCommand()
             Dim txtStatus As TextBox = DirectCast(GridViewQCNStatus.FooterRow.FindControl("Status"), TextBox)
+            Dim txtDescription As TextBox = DirectCast(GridViewQCNStatus.FooterRow.FindControl("Description"), TextBox)
             cmd.Connection = conn
-            cmd.CommandText = "exec sp_InsertQCNStatus '" + txtStatus.Text & "'"
+            cmd.CommandText = "exec sp_InsertQCNStatus '" + txtStatus.Text & "','" + txtDescription.Text & "'"
             conn.Open()
             cmd.ExecuteNonQuery()
             conn.Close()
             GridViewQCNStatus.DataBind()
+        End If
+    End Sub
+
+    Protected Sub GridViewQCNComplexity_RowCommand(ByVal sender As System.Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs)
+        If e.CommandName = "QCNComplexityInsert" Then
+            Dim conn As New SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString)
+            Dim ad As New SqlDataAdapter()
+            Dim cmd As New SqlCommand()
+            Dim txtName As TextBox = DirectCast(GridViewQCNComplexity.FooterRow.FindControl("Name"), TextBox)
+            Dim txtDescription As TextBox = DirectCast(GridViewQCNComplexity.FooterRow.FindControl("Description"), TextBox)
+            cmd.Connection = conn
+            cmd.CommandText = "exec sp_InsertQCNComplexity '" + txtName.Text & "','" + txtDescription.Text & "'"
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            conn.Close()
+            GridViewQCNComplexity.DataBind()
         End If
     End Sub
 End Class

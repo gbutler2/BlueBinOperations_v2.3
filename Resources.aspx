@@ -25,9 +25,9 @@
                         <asp:Button runat="server" Text="Update" CommandName="Update" CausesValidation="True" ValidationGroup="Edit" ID="Button1"></asp:Button>&nbsp;<asp:Button runat="server" Text="Cancel" CommandName="Cancel" CausesValidation="False" ID="Button2"></asp:Button>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Button runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="Button1"></asp:Button>
+                        <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="Button1"></asp:LinkButton>
                     </ItemTemplate>
-                    <FooterTemplate><asp:LinkButton ID="ResourceInsert" runat="server" Text="Add" CommandName="ResourceInsert"></asp:LinkButton></FooterTemplate>
+                    <FooterTemplate><asp:LinkButton ID="ResourceInsert" runat="server" Text="Add" CommandName="ResourceInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="BlueBinResourceID">

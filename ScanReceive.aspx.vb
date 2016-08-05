@@ -420,7 +420,14 @@ Partial Class ScanReceive
             Select Case Error1
                 Case -1
                     Item1TB.BackColor = Color.Red
-                    Item1TB.Text = "ItemID is Not valid!"
+                    Qty1TB.BackColor = Color.Red
+                    Item1TB.Text = "ItemID " & Item1TB.Text & " is Not valid!"
+                    Qty1TB.Text = ""
+                    GoTo LastLine
+                Case -2
+                    Item1TB.BackColor = Color.Red
+                    Qty1TB.BackColor = Color.Red
+                    Item1TB.Text = "Item " & Item1TB.Text & " has no bin waiting to go back from scanning!"
                     Qty1TB.Text = ""
                     GoTo LastLine
                     Exit Select
@@ -433,7 +440,14 @@ Partial Class ScanReceive
             Select Case Error1
                 Case -1
                     Item2TB.BackColor = Color.Red
-                    Item2TB.Text = "ItemID is Not valid!"
+                    Qty2TB.BackColor = Color.Red
+                    Item2TB.Text = "ItemID " & Item2TB.Text & " is Not valid!"
+                    Qty2TB.Text = ""
+                    GoTo LastLine
+                Case -2
+                    Item2TB.BackColor = Color.Red
+                    Qty2TB.BackColor = Color.Red
+                    Item2TB.Text = "Item " & Item2TB.Text & " has no bin waiting to go back from scanning!"
                     Qty2TB.Text = ""
                     GoTo LastLine
                     Exit Select
@@ -446,7 +460,14 @@ Partial Class ScanReceive
             Select Case Error1
                 Case -1
                     Item3TB.BackColor = Color.Red
-                    Item3TB.Text = "ItemID is Not valid!"
+                    Qty3TB.BackColor = Color.Red
+                    Item3TB.Text = "ItemID " & Item3TB.Text & " is Not valid!"
+                    Qty3TB.Text = ""
+                    GoTo LastLine
+                Case -2
+                    Item3TB.BackColor = Color.Red
+                    Qty3TB.BackColor = Color.Red
+                    Item3TB.Text = "Item " & Item3TB.Text & " has no bin waiting to go back from scanning!"
                     Qty3TB.Text = ""
                     GoTo LastLine
                     Exit Select

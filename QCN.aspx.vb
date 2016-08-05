@@ -43,9 +43,9 @@ Partial Public Class QCN
             End Using
 
             If QCNReferenceC = "Yes" Then
-                GridViewQCN.Columns(29).Visible = True
+                GridViewQCN.Columns(27).Visible = True
             Else
-                GridViewQCN.Columns(29).Visible = False
+                GridViewQCN.Columns(27).Visible = False
 
             End If
 
@@ -81,27 +81,27 @@ Partial Public Class QCN
 
     Protected Sub OnRowDataBound(sender As Object, e As GridViewRowEventArgs)
         If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim cellLocation As TableCell = e.Row.Cells(3)
-            Dim cellUpdates As TableCell = e.Row.Cells(28)
-            Dim cellDetails As TableCell = e.Row.Cells(12)
-            cellLocation.ToolTip = TryCast(e.Row.DataItem, DataRowView)("LocationID").ToString()
+            Dim cellLocation As TableCell = e.Row.Cells(5)
+            Dim cellUpdates As TableCell = e.Row.Cells(20)
+            'Dim cellDetails As TableCell = e.Row.Cells(12)
+            cellLocation.ToolTip = "QCNID:" & TryCast(e.Row.DataItem, DataRowView)("QCNID").ToString()
             cellUpdates.ToolTip = TryCast(e.Row.DataItem, DataRowView)("UpdatesText").ToString()
-            cellDetails.ToolTip = TryCast(e.Row.DataItem, DataRowView)("DetailsText").ToString()
+            'cellDetails.ToolTip = TryCast(e.Row.DataItem, DataRowView)("DetailsText").ToString()
         End If
         If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim cell As TableCell = e.Row.Cells(25)
-            Dim cell2 As TableCell = e.Row.Cells(27)
+            Dim cell As TableCell = e.Row.Cells(21)
+            '        Dim cell2 As TableCell = e.Row.Cells(24)
             Dim quantity As Integer = Integer.Parse(cell.Text)
-            Dim Status As String = cell2.Text
+            '        Dim Status As String = cell2.Text
             If quantity > 30 Then
                 cell.BackColor = Color.Red
             End If
             If quantity > 15 AndAlso quantity < 30 Then
                 cell.BackColor = Color.Yellow
             End If
-            If Status = "Hot" Or Status = "Critical" Then
-                cell2.BackColor = Color.Red
-            End If
+            '        If Status = "Hot" Or Status = "Critical" Then
+            '            cell2.BackColor = Color.Red
+            '        End If
 
         End If
     End Sub
@@ -159,7 +159,7 @@ Partial Public Class QCN
     End Sub
 
     Protected Sub OnCheckedChanged(sender As Object, e As EventArgs)
-        GridViewQCN.Columns(26).Visible = TryCast(sender, CheckBox).Checked
+        GridViewQCN.Columns(17).Visible = TryCast(sender, CheckBox).Checked
 
     End Sub
 

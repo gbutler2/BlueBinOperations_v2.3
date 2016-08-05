@@ -42,7 +42,7 @@
                         <asp:LinkButton runat="server" Text="Update" CommandName="Update" CausesValidation="True" ValidationGroup="Edit" ID="Button4"></asp:LinkButton>
                         <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CausesValidation="False" ID="TrainingDeleteB" OnClientClick="return confirm('Are you sure you want to delete this entry?');"></asp:LinkButton>
                     </ItemTemplate>
-                    <FooterTemplate><asp:LinkButton ID="TrainingInsert" runat="server" Text="Add" CommandName="TrainingInsert"></asp:LinkButton></FooterTemplate>
+                    <FooterTemplate><asp:LinkButton ID="TrainingInsert" runat="server" Text="Add" CommandName="TrainingInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
                 </asp:TemplateField>
 
 
@@ -225,7 +225,7 @@
                     <asp:LinkButton runat="server" Text="Edit" CommandName="Edit" CausesValidation="False" ID="ITTrainingModuleB"></asp:LinkButton>
                     <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CausesValidation="False" ID="TrainingModuleDeleteB" OnClientClick="return confirm('Are you sure you want to delete this entry?  Removing a Module will also remove all Training entries for the Module!');"></asp:LinkButton>
                 </ItemTemplate>
-                <FooterTemplate><asp:LinkButton ID="TrainingModuleInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddTrainingModule"  CommandName="TrainingModuleInsert"></asp:LinkButton></FooterTemplate>
+                <FooterTemplate><asp:LinkButton ID="TrainingModuleInsert" runat="server" Text="Add" CausesValidation="True" ValidationGroup="AddTrainingModule"  CommandName="TrainingModuleInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
             </asp:TemplateField>
 
             <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="TrainingModuleID"  Visible="false">

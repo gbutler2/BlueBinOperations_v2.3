@@ -56,17 +56,32 @@
 <p>
 
 
-     <b>Assigned:</b>&nbsp;<asp:DropDownList ID="AssignedSearchDD" AppendDataBoundItems="true" runat="server" DataSourceID="AssignedSearchDS" DataTextField="AssignedUserName" DataValueField="AssignedUserName">
+     <b>Assigned To:</b>&nbsp;<asp:DropDownList ID="AssignedSearchDD" AppendDataBoundItems="true" runat="server" DataSourceID="AssignedSearchDS" DataTextField="AssignedUserName" DataValueField="AssignedUserName">
             <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
         </asp:DropDownList>
            
-     <asp:SqlDataSource runat="server" ID="AssignedSearchDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT AssignedUserID,v.LastName + ', ' + v.FirstName as AssignedUserName FROM qcn.QCN a inner join [bluebin].[BlueBinResource] v on AssignedUserID = v.BlueBinResourceID order by 2"></asp:SqlDataSource>
-  <p>
-     <b>Location:</b>&nbsp;&nbsp;<asp:DropDownList ID="SearchList1" AppendDataBoundItems="true" runat="server" DataSourceID="QCNLocationDS" DataTextField="LocationName" DataValueField="LocationName">
+     <asp:SqlDataSource runat="server" ID="AssignedSearchDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT v.LastName + ', ' + v.FirstName as AssignedUserName FROM qcn.QCN a inner join [bluebin].[BlueBinUser] v on AssignedUserID = v.BlueBinUserID order by 1"></asp:SqlDataSource>
+ <p>
+     <b>QCN Status:</b>&nbsp;&nbsp;<asp:DropDownList ID="QCNStatusSearchDD" AppendDataBoundItems="true" runat="server" DataSourceID="QCNStatusSearchDS" DataTextField="QCNStatusName" DataValueField="QCNStatusName">
             <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
         </asp:DropDownList>
            
-     <asp:SqlDataSource runat="server" ID="QCNLocationDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT case when b.LocationID = b.LocationName then b.LocationID else b.LocationID + ' - ' + b.[LocationName] end as LocationName FROM bluebin.[DimLocation] b  inner join qcn.QCN a on rtrim(a.LocationID) = rtrim(b.LocationID) WHERE a.Active = 1 and b.BlueBinFlag= 1 order by 1"></asp:SqlDataSource>
+     <asp:SqlDataSource runat="server" ID="QCNStatusSearchDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="select Status as QCNStatusName from qcn.QCNStatus where QCNStatusID in (select QCNStatusID from qcn.QCN)"></asp:SqlDataSource>
+
+    </p> 
+    <p>
+     <b>QCN Facility:</b>&nbsp;<asp:DropDownList ID="QCNFacilityS" AppendDataBoundItems="true" runat="server" DataSourceID="QCNFacilityDS" DataTextField="FacilityName" DataValueField="FacilityName">
+            <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
+        </asp:DropDownList>
+           
+     <asp:SqlDataSource runat="server" ID="QCNFacilityDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectQCNFacility"></asp:SqlDataSource>
+</p>
+    <p>
+     <b>QCN Location:</b>&nbsp;<asp:DropDownList ID="QCNLocationS" AppendDataBoundItems="true" runat="server" DataSourceID="QCNLocationDS" DataTextField="LocationName" DataValueField="LocationName">
+            <asp:ListItem Selected = "True" Text = "All" Value = ""></asp:ListItem>
+        </asp:DropDownList>
+           
+     <asp:SqlDataSource runat="server" ID="QCNLocationDS" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectQCNLocation"></asp:SqlDataSource>
 &nbsp;<asp:Button ID="SearchButton"  runat="server" Text="Search" /> &nbsp;&nbsp; 
     </p>
     <p><asp:CheckBox ID="CompletedCB" OnCheckedChanged="OnCheckedChanged" AutoPostBack="true" runat="server" Text="Include Completed and Rejected?" />
@@ -80,16 +95,15 @@
         <Columns>
             <asp:HyperLinkField DataNavigateUrlFields="QCNID" DataNavigateUrlFormatString="QCNFormEdit.aspx?QCNID={0}" Text="Edit"></asp:HyperLinkField>
             <asp:BoundField DataField="QCNID" HeaderText="QCNID" InsertVisible="False" ReadOnly="True" SortExpression="QCNID" Visible="False" />
+            <asp:BoundField DataField="FacilityID" HeaderText="FacilityID" Visible="False" SortExpression="FacilityID" />
+            <asp:BoundField DataField="FacilityName" HeaderText="Facility" SortExpression="FacilityName"  ItemStyle-Wrap="False"/>
+            
             <asp:BoundField DataField="LocationID" HeaderText="LocationID" Visible="False" SortExpression="LocationID" />
             <asp:BoundField DataField="LocationName" HeaderText="Location" SortExpression="LocationName"  ItemStyle-Wrap="False"/>
             
-            <asp:BoundField DataField="RequesterUserID" HeaderText="RequesterUserID" ReadOnly="True" SortExpression="RequesterUserID"  Visible="False"/>
             <asp:BoundField DataField="RequesterUserName" HeaderText="Requester" ReadOnly="True" SortExpression="RequesterUserName" />
-            <asp:BoundField DataField="RequesterLogin" HeaderText="RequesterLogin" ReadOnly="True" SortExpression="RequesterLogin"  Visible="False" />
-            <asp:BoundField DataField="RequesterTitleName" HeaderText="Requester Title" SortExpression="RequesterTitleName"  Visible="False" />
-            
-            <asp:BoundField DataField="AssignedUserID" HeaderText="AssignedUserID" ReadOnly="True" SortExpression="AssignedUserID"  Visible="False"/>
-            <asp:BoundField DataField="AssignedUserName" HeaderText="Assigned" ReadOnly="True" SortExpression="AssignedUserName" />
+            <asp:BoundField DataField="ApprovedBy" HeaderText="Approved By" ReadOnly="True" SortExpression="ApprovedBy" />
+            <asp:BoundField DataField="AssignedUserName" HeaderText="Assigned To" ReadOnly="True" SortExpression="AssignedUserName" />
             <asp:BoundField DataField="AssignedLogin" HeaderText="AssignedLogin" ReadOnly="True" SortExpression="AssignedLogin"  Visible="False" />
             <asp:BoundField DataField="AssignedTitleName" HeaderText="Assigned Title" SortExpression="AssignedTitleName"  Visible="False" />
             
@@ -97,19 +111,19 @@
             <asp:BoundField DataField="ItemID" HeaderText="ItemID" SortExpression="ItemID"  Visible="True"/>
             <asp:BoundField DataField="ItemClinicalDescription" HeaderText="Item" SortExpression="ItemClinicalDescription" />
             <asp:BoundField DataField="Par" HeaderText="Par" SortExpression="Par"  DataFormatString="{0:###}"/>
-            <asp:BoundField DataField="UOM" HeaderText="UOM" SortExpression="UOM"  Visible="False"/>
-            <asp:BoundField DataField="ItemManufacturer" HeaderText="Manuf" SortExpression="ItemManufacturer"  Visible="False"/>
-            <asp:BoundField DataField="ItemManufacturerNumber" HeaderText="Manuf#"  Visible="False" SortExpression="ItemManufacturerNumber" />
+            <asp:BoundField DataField="UOM" HeaderText="UOM" SortExpression="UOM" Visible="false" />
+            <asp:BoundField DataField="ManuNumName" HeaderText="Manuf Name/Num" SortExpression="ManuNumName"  Visible="False"/>
             <asp:BoundField DataField="DetailsText" HeaderText="DetailsText" SortExpression="DetailsText"  Visible="False"/>
             <asp:BoundField DataField="Details" HeaderText="Details" SortExpression="Details"  Visible="False"/>
             <asp:BoundField DataField="UpdatesText" HeaderText="UpdatesText" SortExpression="UpdatesText"  Visible="False"/>
-            <asp:BoundField DataField="Updates" HeaderText="Updates" SortExpression="Updates"  Visible="False"/>
+            <asp:BoundField DataField="Updates" HeaderText="Updates" SortExpression="Updates" />
+            <asp:BoundField DataField="DaysOpen" HeaderText="Days Open" SortExpression="DaysOpen" />
             <asp:BoundField DataField="DateEntered" HeaderText="Date Entered" SortExpression="DateEntered" DataFormatString="{0:d}"/>
             <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" SortExpression="LastUpdated" DataFormatString="{0:d}"/>
-            <asp:BoundField DataField="DaysOpen" HeaderText="Days Open" SortExpression="DaysOpen" />
+            
             <asp:BoundField DataField="DateCompleted" HeaderText="Date Completed" SortExpression="DateCompleted" DataFormatString="{0:d}"  Visible ="False"/>
-            <asp:BoundField DataField="BinStatus" HeaderText="Bin Status" SortExpression="BinStatus" />
             <asp:BoundField DataField="Status" HeaderText="QCN Status" SortExpression="Status" />
+            <asp:BoundField DataField="Complexity" HeaderText="CX" SortExpression="Complexity" />
             <asp:BoundField runat="server" DataField="InternalReference" HeaderText="Reference" SortExpression="InternalReference" />
              <asp:TemplateField ShowHeader="False">
              <ItemTemplate>
@@ -137,10 +151,12 @@
     <p>
   
         <asp:SqlDataSource ID="QCNDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:Site_ConnectionString %>" 
-                SelectCommand="exec sp_SelectQCN @LocationName,@Completed,@AssignedUserName" DeleteCommand="exec sp_DeleteQCN @QCNID">
+                SelectCommand="exec sp_SelectQCN @FacilityName,@LocationName,@QCNStatusName,@Completed,@AssignedUserName" DeleteCommand="exec sp_DeleteQCN @QCNID">
             <SelectParameters>
                 <asp:ControlParameter ControlID="AssignedSearchDD" PropertyName ="Text" DefaultValue="%" Name="AssignedUserName" Type="String"></asp:ControlParameter>
-                <asp:ControlParameter ControlID="SearchList1" PropertyName ="Text" DefaultValue="%" Name="LocationName" Type="String"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="QCNStatusSearchDD" PropertyName ="Text" DefaultValue="%" Name="QCNStatusName" Type="String"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="QCNLocationS" PropertyName ="Text" DefaultValue="%" Name="LocationName" Type="String"></asp:ControlParameter>
+                <asp:ControlParameter ControlID="QCNFacilityS" PropertyName ="Text" DefaultValue="%" Name="FacilityName" Type="String"></asp:ControlParameter>
                 <asp:ControlParameter ControlID="CompletedCB" Name="Completed" PropertyName="Checked" /> 
             </SelectParameters>
 

@@ -413,8 +413,8 @@
     </asp:TableRow> 
     
     <asp:TableRow Height="10"></asp:TableRow>
- <asp:TableRow><asp:TableCell><asp:Button ID="HardwareOrderSubmitEmail" runat="server" Text="Submit Order" />&nbsp;
-     <asp:Button ID="HardwareOrderCancel" runat="server" Text="Cancel" /><br /></asp:TableCell>
+ <asp:TableRow><asp:TableCell><asp:Button ID="HardwareOrderSubmitEmail" runat="server" Text="Submit Order"  class="btn btn-primary btn-lg"/>&nbsp;
+     <asp:Button ID="HardwareOrderCancel" runat="server" Text="Cancel" class="btn btn-primary btn-lg" /><br /></asp:TableCell>
  </asp:TableRow>       
       
         </asp:Table>
