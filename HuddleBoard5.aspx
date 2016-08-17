@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Huddle Board2 - BlueBin DMS App" Language="VB" AutoEventWireup="true" CodeFile="HuddleBoard2.aspx.vb" Inherits="HuddleBoard2" %>
+﻿<%@ Page Title="Huddle Board5 - BlueBin DMS App" Language="VB" AutoEventWireup="true" CodeFile="HuddleBoard5.aspx.vb" Inherits="HuddleBoard5" %>
 
 <!DOCTYPE html>
 

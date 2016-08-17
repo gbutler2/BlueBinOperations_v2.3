@@ -15,6 +15,10 @@
         </p>
 </asp:TableCell></asp:TableRow>
 <asp:TableRow Height="10"></asp:TableRow>
+    
+
+
+<asp:TableRow Height="10"></asp:TableRow>
     <asp:TableRow><asp:TableCell>
         <asp:Table runat="server" ID="SearchTable">
                 <asp:TableRow>
@@ -173,7 +177,7 @@
                 <EditItemTemplate>
                     <asp:DropDownList runat="server" ID="RoleDD" SelectedValue='<%# Bind("RoleName") %>' DataSourceID="RolesDataSource" DataTextField="RoleName" DataValueField="RoleName">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="RolesDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [RoleID],[RoleName] FROM bluebin.[BlueBinRoles]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="RolesDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectRoles ''"></asp:SqlDataSource>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Bind("RoleName") %>' ID="ITRoleNameL"></asp:Label>
@@ -181,7 +185,7 @@
                 <FooterTemplate>
                     <asp:DropDownList runat="server" ID="RoleDDF" DataSourceID="RolesDataSourceF" DataTextField="RoleName" DataValueField="RoleName" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="RolesDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [RoleName] FROM bluebin.[BlueBinRoles]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="RolesDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectRoles ''"></asp:SqlDataSource>
                 </FooterTemplate>
                 <ItemStyle Wrap="False" Width="60px"></ItemStyle>
             </asp:TemplateField>
@@ -385,7 +389,7 @@
     
 <%-- Role OperationsGridview --%>  
 
-    <asp:TableRow><asp:TableCell><asp:Label runat="server" id="Label2"></asp:Label></asp:TableCell></asp:TableRow>
+<asp:TableRow><asp:TableCell><asp:Label runat="server" id="Label2"></asp:Label></asp:TableCell></asp:TableRow>
 <asp:TableRow>
 <asp:TableCell Width="500px"  >
 <asp:Label runat="server" id="hiddenRoleOperations" Visible="False"><h3>Role Operations</h3><p></asp:Label>
@@ -419,7 +423,7 @@
                 <FooterTemplate>
 			<asp:DropDownList runat="server" ID="RoleNameRODDF" DataSourceID="RoleNameDataSourceF" DataTextField="RoleName" DataValueField="RoleID" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="RoleNameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [RoleID],[RoleName] FROM bluebin.[BlueBinRoles]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="RoleNameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectRoles ''"></asp:SqlDataSource>
 		</FooterTemplate>
             </asp:TemplateField>
             
@@ -431,7 +435,7 @@
                 <FooterTemplate>
 			<asp:DropDownList runat="server" ID="OpNameRODDF" DataSourceID="OpNameDataSourceF" DataTextField="OpName" DataValueField="OpID" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="OpNameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [OpID],[OpName] FROM bluebin.[BlueBinOperations]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="OpNameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectOperations ''"></asp:SqlDataSource>
 		</FooterTemplate>
             </asp:TemplateField>
             
@@ -454,9 +458,11 @@
 <%-- UserOperationsGridview --%>  
 
     <asp:TableRow><asp:TableCell><asp:Label runat="server" id="Label3"></asp:Label></asp:TableCell></asp:TableRow>
+
+
 <asp:TableRow>
 <asp:TableCell Width="500px"  >
-<asp:Label runat="server" id="hiddenUserOperations" Visible="False"><h3>User Operations</h3><p></asp:Label>
+    <asp:Label runat="server" id="hiddenUserOperations" Visible="False"><h3>User Operations</h3></asp:Label>
         <asp:GridView ID="GridViewUserOperations" OnRowCommand="GridViewUserOperations_RowCommand" CssClass="GridViewitem" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataSourceID="UserOperationsDatasource" AutoGenerateColumns="False" DataKeyNames="BlueBinUserID,OpID" AllowSorting="True" AllowPaging="True" ShowFooter="True">
         <AlternatingRowStyle BackColor="#DCDCDC"></AlternatingRowStyle>
 
@@ -487,7 +493,7 @@
                 <FooterTemplate>
 		<asp:DropDownList runat="server" ID="NameUODDF" DataSourceID="NameDataSourceF" DataTextField="Name" DataValueField="BlueBinUserID" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="NameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [BlueBinUserID],LastName + ', ' + FirstName as Name FROM bluebin.[BlueBinUser] where Active = 1"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="NameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectUsersShort"></asp:SqlDataSource>
 		</FooterTemplate>
             	</asp:TemplateField>
             
@@ -504,7 +510,7 @@
                 <FooterTemplate>
 			<asp:DropDownList runat="server" ID="OpNameUODDF" DataSourceID="OpNameDataSourceF2" DataTextField="OpName" DataValueField="OpID" AppendDataBoundItems="False">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="OpNameDataSourceF2" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [OpID],[OpName] FROM bluebin.[BlueBinOperations]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="OpNameDataSourceF2" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="exec sp_SelectOperations ''"></asp:SqlDataSource>
 		</FooterTemplate>
             </asp:TemplateField>
             

@@ -65,7 +65,11 @@
                                   <a class="dropdown-toggle" runat="server" data-toggle="dropdown" id="DashboardDD">Dashboard<span class="caret"></span></a>
                                   <ul class="dropdown-menu" aria-labelledby="themes">
 							                    <li><a runat="server" href="~/Dashboard" id="MainDashboardDD">Main Dashboard</a></li>
-                                                <li><a runat="server" href="~/HuddleBoard" id="HuddleBoardDD" target ="_blank">Digital Huddle Board</a></li>
+                                      <li><a runat="server" href="~/HuddleBoard" id="HuddleBoardDD" target ="_blank"><asp:Label runat="server" ID="HuddleBoardL"></asp:Label></a></li>
+                                      <li><a runat="server" href="~/HuddleBoard2" id="HuddleBoard2DD" target ="_blank"><asp:Label runat="server" ID="HuddleBoard2L"></asp:Label></a></li>
+                                      <li><a runat="server" href="~/HuddleBoard3" id="HuddleBoard3DD" target ="_blank"><asp:Label runat="server" ID="HuddleBoard3L"></asp:Label></a></li>
+                                      <li><a runat="server" href="~/HuddleBoard4" id="HuddleBoard4DD" target ="_blank"><asp:Label runat="server" ID="HuddleBoard4L"></asp:Label></a></li>
+                                      <li><a runat="server" href="~/HuddleBoard5" id="HuddleBoard5DD" target ="_blank"><asp:Label runat="server" ID="HuddleBoard5L"></asp:Label></a></li>
                                                      
                                   </ul>
                                 </li>

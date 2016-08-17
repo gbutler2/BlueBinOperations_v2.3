@@ -151,7 +151,9 @@ Public Class Dashboard
             Dim OPPickLineVolume As String
             Dim OPOverallLineVolume As String
             Dim OPKanbansAdjusted As String
+            Dim OPConesDashboard As String
             Dim OPQCNDashboard As String
+            Dim OPQCNDetail As String
             Dim OPGembaDashboard As String
 
             Dim SrcBuyerPerformance As String
@@ -274,8 +276,14 @@ Public Class Dashboard
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Kanbans Adjusted")
                     OPKanbansAdjusted = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Cones Dashboard")
+                    OPConesDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-QCN Dashboard")
                     OPQCNDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-QCN Detail")
+                    OPQCNDetail = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Gemba Dashboard")
                     OPGembaDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -444,10 +452,22 @@ Public Class Dashboard
                 MenuOPKanbansAdjusted.Visible = False
             End If
 
+            If OPConesDashboard = "Yes" Then
+                MenuOPConesDashboard.Visible = True
+            Else
+                MenuOPConesDashboard.Visible = False
+            End If
+
             If OPQCNDashboard = "Yes" Then
                 MenuOPQCNDashboard.Visible = True
             Else
                 MenuOPQCNDashboard.Visible = False
+            End If
+
+            If OPQCNDetail = "Yes" Then
+                MenuOPQCNDetail.Visible = True
+            Else
+                MenuOPQCNDetail.Visible = False
             End If
 
             If OPGembaDashboard = "Yes" Then

@@ -67,13 +67,7 @@
                 </asp:TableCell><asp:TableCell Width="300px">
                     <asp:TextBox ID="ReplenishmentTB" runat="server" Height="50px"  BackColor="#CCCCCC" style="text-align:center"  Font-Size="Large"  Width="50px"  ReadOnly="True"></asp:TextBox>
                 </asp:TableCell></asp:TableRow><asp:TableRow Height="10"></asp:TableRow>
-<%-- Stage Score --%>
-<asp:TableRow Width="400px">    
-                <asp:TableCell Width="100px">
-                    <asp:Label ID="Label8" runat="server" Text="Stage Score"  TextMode="MultiLine" Width="100px"></asp:Label>
-                </asp:TableCell><asp:TableCell Width="300px">
-                    <asp:TextBox ID="StageTB" runat="server" Height="50px"  BackColor="#CCCCCC" style="text-align:center"  Font-Size="Large"  Width="50px"  ReadOnly="True"></asp:TextBox>
-                </asp:TableCell></asp:TableRow><asp:TableRow Height="10"></asp:TableRow>
+
  <%-- Node Integrity Score --%>
 <asp:TableRow Width="400px">    
                 <asp:TableCell Width="100px">
@@ -82,6 +76,14 @@
                     <asp:TextBox ID="NodeIntegrityTB" runat="server" Height="50px"  BackColor="#CCCCCC" style="text-align:center"  Font-Size="Large"  Width="50px"  ReadOnly="True"></asp:TextBox>
                 </asp:TableCell></asp:TableRow><asp:TableRow Height="10"></asp:TableRow>
  
+            <%-- Stage Score --%>
+<asp:TableRow Width="400px">    
+                <asp:TableCell Width="100px">
+                    <asp:Label ID="Label8" runat="server" Text="Stage Score"  TextMode="MultiLine" Width="100px"></asp:Label>
+                </asp:TableCell><asp:TableCell Width="300px">
+                    <asp:TextBox ID="StageTB" runat="server" Height="50px"  BackColor="#CCCCCC" style="text-align:center"  Font-Size="Large"  Width="50px"  ReadOnly="True"></asp:TextBox>
+                </asp:TableCell></asp:TableRow><asp:TableRow Height="10"></asp:TableRow>
+
  <%-- Total Score --%>
 <asp:TableRow Width="400px">    
                 <asp:TableCell Width="100px">

@@ -10,13 +10,13 @@
     <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlueBin QCN Report Viewer</title>
+    <title runat="server" id="HBTitle"></title>
 
 
 </head>
 
     <body>
-        <footer><a href="#" onClick="RefreshReport()" style="font-size:x-small;">Refresh Report Data</a></footer>
+        <footer><a href="#" onClick="RefreshReport()" style="font-size:x-small;">Refresh Report Data - <asp:Label runat="server" ID="HBTitleL"></asp:Label></a></footer>
     </body>
     <script type="text/javascript" src="https://online.tableau.com/javascripts/api/tableau-2.min.js"></script>
         <script>

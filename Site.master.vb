@@ -47,6 +47,10 @@ Partial Public Class SiteMaster
             Dim UserMENUDashboardSrc As String
             Dim UserMENUDashboardOps As String
             Dim UserMENUDashboardHB As String
+            Dim UserMENUDashboardHB2 As String
+            Dim UserMENUDashboardHB3 As String
+            Dim UserMENUDashboardHB4 As String
+            Dim UserMENUDashboardHB5 As String
             Dim UserMENUQCN As String
             Dim UserMENUGemba As String
             Dim UserMENUHardware As String
@@ -57,6 +61,10 @@ Partial Public Class SiteMaster
             Dim MENUDashboardSrc As String
             Dim MENUDashboardOps As String
             Dim MENUDashboardHB As String
+            Dim MENUDashboardHB2 As String
+            Dim MENUDashboardHB3 As String
+            Dim MENUDashboardHB4 As String
+            Dim MENUDashboardHB5 As String
             Dim MENUQCN As String
             Dim MENUGemba As String
             Dim MENUHardware As String
@@ -67,6 +75,11 @@ Partial Public Class SiteMaster
             Dim UserMENUCones As String
             Dim MENUCones As String
             Dim ScanReceiveOptions As String
+            Dim HuddleBoardTitle As String
+            Dim HuddleBoard2Title As String
+            Dim HuddleBoard3Title As String
+            Dim HuddleBoard4Title As String
+            Dim HuddleBoard5Title As String
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
             Using conroles As New SqlConnection(constr)
@@ -130,6 +143,26 @@ Partial Public Class SiteMaster
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
                     cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard")
                     UserMENUDashboardHB = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
+                    'UserMENU-Dashboard-HuddleBoard
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard2")
+                    UserMENUDashboardHB2 = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
+                    'UserMENU-Dashboard-HuddleBoard
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard3")
+                    UserMENUDashboardHB3 = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
+                    'UserMENU-Dashboard-HuddleBoard
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard4")
+                    UserMENUDashboardHB4 = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
+                    'UserMENU-Dashboard-HuddleBoard
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard5")
+                    UserMENUDashboardHB5 = Convert.ToString(cmdadmin.ExecuteScalar())
                     cmdadmin.Parameters.Clear()
                     'UserMENU-QCN
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
@@ -196,6 +229,22 @@ Partial Public Class SiteMaster
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard")
                     MENUDashboardHB = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
+                    'MENU-Dashboard-HuddleBoard
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard2")
+                    MENUDashboardHB2 = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    'MENU-Dashboard-HuddleBoard
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard3")
+                    MENUDashboardHB3 = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    'MENU-Dashboard-HuddleBoard
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard4")
+                    MENUDashboardHB4 = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    'MENU-Dashboard-HuddleBoard
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard5")
+                    MENUDashboardHB5 = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
                     'MENU-QCN
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-QCN")
                     MENUQCN = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -225,6 +274,39 @@ Partial Public Class SiteMaster
                     MENUOther = Convert.ToString(cmdmenu.ExecuteScalar())
 
                     conmenu.Close()
+                End Using
+            End Using
+
+            Using contableau As New SqlConnection(constr)
+                Using cmdtableau As New SqlCommand("sp_SelectConfigValues")
+                    cmdtableau.CommandType = CommandType.StoredProcedure
+                    cmdtableau.Connection = contableau
+                    contableau.Open()
+
+
+                    'Tableau HuddleBoard1 Name
+                    cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoardTitle")
+                    HuddleBoardTitle = Convert.ToString(cmdtableau.ExecuteScalar())
+                    cmdtableau.Parameters.Clear()
+                    'Tableau HuddleBoard2 Name
+                    cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard2Title")
+                    HuddleBoard2Title = Convert.ToString(cmdtableau.ExecuteScalar())
+                    cmdtableau.Parameters.Clear()
+                    'Tableau HuddleBoard3 Name
+                    cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard3Title")
+                    HuddleBoard3Title = Convert.ToString(cmdtableau.ExecuteScalar())
+                    cmdtableau.Parameters.Clear()
+                    'Tableau HuddleBoard4 Name
+                    cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard4Title")
+                    HuddleBoard4Title = Convert.ToString(cmdtableau.ExecuteScalar())
+                    cmdtableau.Parameters.Clear()
+                    'Tableau HuddleBoard5 Name
+                    cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard5Title")
+                    HuddleBoard5Title = Convert.ToString(cmdtableau.ExecuteScalar())
+                    cmdtableau.Parameters.Clear()
+
+
+                    contableau.Close()
                 End Using
             End Using
 
@@ -268,8 +350,42 @@ Partial Public Class SiteMaster
 
             If MENUDashboardHB = "No" Or UserMENUDashboardHB = "No" Then
                 HuddleBoardDD.Visible = False
+                HuddleBoardL.Text = HuddleBoardTitle
             Else
                 HuddleBoardDD.Visible = True
+                HuddleBoardL.Text = HuddleBoardTitle
+            End If
+
+            If MENUDashboardHB2 = "No" Or UserMENUDashboardHB2 = "No" Then
+                HuddleBoard2DD.Visible = False
+                HuddleBoard2L.Text = HuddleBoard2Title
+            Else
+                HuddleBoard2DD.Visible = True
+                HuddleBoard2L.Text = HuddleBoard2Title
+            End If
+
+            If MENUDashboardHB3 = "No" Or UserMENUDashboardHB3 = "No" Then
+                HuddleBoard3DD.Visible = False
+                HuddleBoard3L.Text = HuddleBoard3Title
+            Else
+                HuddleBoard3DD.Visible = True
+                HuddleBoard3L.Text = HuddleBoard3Title
+            End If
+
+            If MENUDashboardHB4 = "No" Or UserMENUDashboardHB4 = "No" Then
+                HuddleBoard4DD.Visible = False
+                HuddleBoard4L.Text = HuddleBoard4Title
+            Else
+                HuddleBoard4DD.Visible = True
+                HuddleBoard4L.Text = HuddleBoard4Title
+            End If
+
+            If MENUDashboardHB5 = "No" Or UserMENUDashboardHB5 = "No" Then
+                HuddleBoard5DD.Visible = False
+                HuddleBoard5L.Text = HuddleBoard5Title
+            Else
+                HuddleBoard5DD.Visible = True
+                HuddleBoard5L.Text = HuddleBoard5Title
             End If
 
             'If MENUDashboardSC = "No" Or UserMENUDashboardSC = "No" Then

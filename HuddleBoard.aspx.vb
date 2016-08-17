@@ -25,6 +25,8 @@ Partial Public Class HuddleBoard
         Dim TableauSite As String
         Dim TableauWorkbook As String
         Dim TableauURL As String
+        Dim HuddleBoardTitle As String
+        Dim HuddleBoardWorkbook As String
         Dim UserLogin As String = Page.User.Identity.Name.ToString().ToLower()
             ' Create a request using a URL that can receive a post.
 
@@ -44,8 +46,16 @@ Partial Public Class HuddleBoard
                     cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauSiteName")
                     TableauSite = Convert.ToString(cmdtableau.ExecuteScalar())
                     cmdtableau.Parameters.Clear()
-                    'Tableau Workbook Name
-                    cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauWorkbook")
+                'Tableau Workbook Name
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoardTitle")
+                HuddleBoardTitle = Convert.ToString(cmdtableau.ExecuteScalar())
+                cmdtableau.Parameters.Clear()
+                'Tableau Workbook Name
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoardWorkbook")
+                HuddleBoardWorkbook = Convert.ToString(cmdtableau.ExecuteScalar())
+                cmdtableau.Parameters.Clear()
+                'Tableau Workbook Name
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "TableauWorkbook")
                     TableauWorkbook = Convert.ToString(cmdtableau.ExecuteScalar())
                     cmdtableau.Parameters.Clear()
                 'Generic Login Name
@@ -56,7 +66,11 @@ Partial Public Class HuddleBoard
                 End Using
             End Using
 
-            Dim TableauLogin As String
+        'Set the Name of the Page and the Refresh Text
+        HBTitle.Text = HuddleBoardTitle
+        HBTitleL.Text = HuddleBoardTitle
+
+        Dim TableauLogin As String
             'Set the User Login to be bluebin only if it exists.  If it doesn't, use the generic login from the tables.
             If UserLogin.Contains("@bluebin.com") Then
                 TableauLogin = UserLogin
@@ -114,7 +128,7 @@ Partial Public Class HuddleBoard
             Dim TableaURLDB As String = dt.Rows(0)("ConfigValue").ToString()
 
         'TableauFullURL = "http://intelligence.bluebin.com/t" & TableaURLDB & "Home"
-        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/HB-" & TableauWorkbook & "/HuddleBoard&:toolbar=no&:toolbar=bottom"
+        TableauFullURL = TableauURL & "/trusted/" & responseFromServer & "/t/" & TableauSite & "/views/" & HuddleBoardWorkbook & "/HuddleBoard&:toolbar=no&:toolbar=bottom"
 
         con.Close()
         'End If

@@ -24,7 +24,9 @@ Partial Class UserAdministration
         GridViewUserOperations.Visible = False
         hiddenRoleOperations.Visible = False
         GridViewRoleOperations.Visible = False
+
         SearchBox.Text = ""
+        AddUserErrorLabel.Text = ""
     End Sub
 
     Protected Sub RolesB_Click(sender As Object, e As EventArgs) Handles RolesB.Click
@@ -41,7 +43,9 @@ Partial Class UserAdministration
         GridViewUserOperations.Visible = False
         hiddenRoleOperations.Visible = False
         GridViewRoleOperations.Visible = False
+
         SearchBox.Text = ""
+        AddUserErrorLabel.Text = ""
     End Sub
 
     Protected Sub OperationsB_Click(sender As Object, e As EventArgs) Handles OperationsB.Click
@@ -58,7 +62,9 @@ Partial Class UserAdministration
         GridViewUserOperations.Visible = False
         hiddenRoleOperations.Visible = False
         GridViewRoleOperations.Visible = False
+
         SearchBox.Text = ""
+        AddUserErrorLabel.Text = ""
     End Sub
 
     Protected Sub RoleOperationsB_Click(sender As Object, e As EventArgs) Handles RoleOperationsB.Click
@@ -66,7 +72,7 @@ Partial Class UserAdministration
         SearchTable.Visible = True
         ExportUsers.Visible = False
         GridViewRoles.Visible = False
-        GridViewOperations.DataBind()
+        GridViewRoleOperations.DataBind()
         hiddenRoles.Visible = False
         hiddenUsers.Visible = False
         hiddenOperations.Visible = False
@@ -75,7 +81,9 @@ Partial Class UserAdministration
         GridViewUserOperations.Visible = False
         hiddenRoleOperations.Visible = True
         GridViewRoleOperations.Visible = True
+
         SearchBox.Text = ""
+        AddUserErrorLabel.Text = ""
     End Sub
 
     Protected Sub UserOperationsB_Click(sender As Object, e As EventArgs) Handles UserOperationsB.Click
@@ -83,7 +91,7 @@ Partial Class UserAdministration
         SearchTable.Visible = True
         ExportUsers.Visible = False
         GridViewRoles.Visible = False
-        GridViewOperations.DataBind()
+        GridViewUserOperations.DataBind()
         hiddenRoles.Visible = False
         hiddenUsers.Visible = False
         hiddenOperations.Visible = False
@@ -92,7 +100,9 @@ Partial Class UserAdministration
         GridViewUserOperations.Visible = True
         hiddenRoleOperations.Visible = False
         GridViewRoleOperations.Visible = False
+
         SearchBox.Text = ""
+        AddUserErrorLabel.Text = ""
     End Sub
 
 
@@ -101,6 +111,7 @@ Partial Class UserAdministration
         If Not Page.IsPostBack() Then
             GridViewUsers.DataBind()
             ExportUsers.Visible = False
+            hiddenUsers.Visible = True
             GridViewRoles.DataBind()
             GridViewOperations.DataBind()
             GridViewRoleOperations.DataBind()
@@ -111,8 +122,9 @@ Partial Class UserAdministration
             GridViewOperations.Visible = False
             GridViewUserOperations.Visible = False
             GridViewRoleOperations.Visible = False
-            AddUserErrorLabel.Text = ""
 
+            AddUserErrorLabel.Text = ""
+            SearchBox.Text = ""
         End If
     End Sub
 
@@ -307,6 +319,8 @@ Partial Class UserAdministration
             GridViewUserOperations.DataBind()
         End If
     End Sub
+
+
 
     Protected Sub GridViewUserOperations_RowCommand(ByVal sender As System.Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs)
         If e.CommandName = "UserOperationsInsert" Then

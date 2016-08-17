@@ -10,7 +10,7 @@ Imports System.IO
 Imports System.Net
 Imports System.Text
 
-Partial Public Class HuddleBoard2
+Partial Public Class HuddleBoard4
     Inherits Page
     Protected TableauFullURL As String
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -47,11 +47,11 @@ Partial Public Class HuddleBoard2
                 TableauSite = Convert.ToString(cmdtableau.ExecuteScalar())
                 cmdtableau.Parameters.Clear()
                 'Tableau Workbook Name
-                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard2Title")
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard4Title")
                 HuddleBoardTitle = Convert.ToString(cmdtableau.ExecuteScalar())
                 cmdtableau.Parameters.Clear()
                 'Tableau Workbook Name
-                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard2Workbook")
+                cmdtableau.Parameters.AddWithValue("@ConfigName", "HuddleBoard4Workbook")
                 HuddleBoardWorkbook = Convert.ToString(cmdtableau.ExecuteScalar())
                 cmdtableau.Parameters.Clear()
                 'Tableau Workbook Name

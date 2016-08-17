@@ -102,10 +102,9 @@ Partial Class QCNFormEdit
         Updates = Updates.Replace("'", "''")
         InternalReference = InternalReference.Replace("'", "''")
 
-        If String.IsNullOrEmpty(AssignedDD.SelectedItem.Value.ToString()) Then
-            Assigned = ", "
-        End If
-
+        'If String.IsNullOrEmpty(AssignedDD.SelectedItem.Value.ToString()) Then
+        'Assigned = ", "
+        'End If
 
         cmd.CommandType = System.Data.CommandType.Text
 

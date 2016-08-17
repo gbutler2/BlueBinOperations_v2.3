@@ -15,7 +15,7 @@
             
             <h2>BlueBin Dashboard</h2>
             <p>
-                View your Daily Management Dashboard Reports by logging into the BlueBin Intelligence Modle powered by Tableau.  Dozens of market-leading reports are available to help you track the health of your Supply Chain.
+                View your Daily Management Dashboard Reports by logging into the BlueBin Intelligence Module powered by Tableau.  Dozens of market-leading reports are available to help you track the health of your Supply Chain.
             </p>
             <p>
                 <a runat="server" class="btn btn-primary btn-sm" href="~/Dashboard">Click Here &raquo;
