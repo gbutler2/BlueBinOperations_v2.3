@@ -48,7 +48,7 @@
 <asp:TableRow>
 <asp:TableCell Width="1000px">    
 <p>
-    <asp:Button ID="Button1" class="btn btn-primary btn-lg" runat="server" Text="New QCN Form" />&nbsp;
+    <asp:Button ID="NewQCNB" class="btn btn-primary btn-lg" runat="server" Text="New QCN Form" />&nbsp;
     <asp:Button ID="QCNDashboardB" class="btn btn-primary btn-lg" runat="server" Text="QCN Dashboard" />
     </p>
 
@@ -93,7 +93,7 @@
     <asp:GridView  CssClass="GridViewitem" ID="GridViewQCN" ButtonType="Button"  OnPageIndexChanging="OnPageIndexChanging" OnRowDataBound="OnRowDataBound" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="QCNDatasource" GridLines="Vertical" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="QCNID" PageSize="30">
         <AlternatingRowStyle BackColor="#DCDCDC" />
         <Columns>
-            <asp:HyperLinkField DataNavigateUrlFields="QCNID" DataNavigateUrlFormatString="QCNFormEdit.aspx?QCNID={0}" Text="Edit"></asp:HyperLinkField>
+            <asp:HyperLinkField DataNavigateUrlFields="QCNID" DataNavigateUrlFormatString="QCNFormEdit.aspx?QCNID={0}" Text="Edit" ></asp:HyperLinkField>
             <asp:BoundField DataField="QCNID" HeaderText="QCNID" InsertVisible="False" ReadOnly="True" SortExpression="QCNID" Visible="False" />
             <asp:BoundField DataField="FacilityID" HeaderText="FacilityID" Visible="False" SortExpression="FacilityID" />
             <asp:BoundField DataField="FacilityName" HeaderText="Facility" SortExpression="FacilityName"  ItemStyle-Wrap="False"/>

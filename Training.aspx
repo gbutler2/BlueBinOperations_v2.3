@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Training" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Training.aspx.vb" Inherits="Training" %>
+﻿<%@ Page Title="Training Module" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Training.aspx.vb" Inherits="Training" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
@@ -26,9 +26,43 @@
             &nbsp;<asp:Button ID="SearchNameLB" runat="server" CausesValidation="False" Text="Search Name"></asp:Button>
 
 </p>
-        <asp:Label runat="server" id="hiddenTraining" Visible="False"><h3>Training</h3><p></asp:Label>
+        </asp:TableCell></asp:TableRow>
+
+        <%-- Add Training --%>     
+    <asp:TableRow><asp:TableCell><asp:Label runat="server" id="hiddenTraining" Visible="False"><h3>Training List</h3><p></asp:Label></asp:TableCell></asp:TableRow>
+    <asp:TableRow ID="AddTrainingJT" runat="server" Width="250">
+        <asp:TableCell >
+          <asp:Table runat="server" CellPadding="1" CellSpacing="1" Height="20">
+        <asp:TableRow Width="250" BackColor="#CCCCCC">
+          <asp:TableCell ForeColor="#000084" Font-Bold="True" BackColor="White">Add Training Entry: </asp:TableCell>
+          <asp:TableCell Width ="3"></asp:TableCell><asp:TableCell><asp:DropDownList runat="server" ID="NameDDAdd" DataSourceID="NameDataSourceF" DataTextField="ResourceName" DataValueField="BlueBinResourceID" AppendDataBoundItems="False"></asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="NameDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [BlueBinResourceID],LastName + ', ' + FirstName as [ResourceName] FROM bluebin.[BlueBinResource]"></asp:SqlDataSource></asp:TableCell>
+          <asp:TableCell Width ="3"></asp:TableCell><asp:TableCell><asp:DropDownList runat="server" ID="TrainingModuleUODDAdd" DataSourceID="TrainingModuleDataSourceF2" DataTextField="ModuleName" DataValueField="TrainingModuleID" AppendDataBoundItems="False"></asp:DropDownList>
+                        <asp:SqlDataSource runat="server" ID="TrainingModuleDataSourceF2" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="select TrainingModuleID,ModuleName from bluebin.TrainingModule where Active = 1"></asp:SqlDataSource></asp:TableCell>
+          <asp:TableCell Width ="3"></asp:TableCell><asp:TableCell>
+              <asp:DropDownList runat="server"  AutoPostBack="False" ID="StatusDDAdd" >
+                        <asp:ListItem Value="No" Selected="True">No</asp:ListItem>
+                        <asp:ListItem Value="Trained">Trained</asp:ListItem>
+                        <asp:ListItem Value="Demo">Demo</asp:ListItem>
+                        <asp:ListItem Value="Teach">Teach</asp:ListItem>
+                    </asp:DropDownList></asp:TableCell>
+                        
+          <asp:TableCell Width ="3"></asp:TableCell>
+              <asp:TableCell  BackColor="White"><asp:LinkButton ID="TrainingAddB" runat="server" Text="Submit"  class="btn btn-primary btn-sm"></asp:LinkButton></asp:TableCell>
+          
+        </asp:TableRow>
+        <asp:TableRow Height="10px"></asp:TableRow>
+          </asp:Table>
+
+        </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow><asp:TableCell><asp:Label runat="server" id="TrainingAddErrorText"></asp:Label></asp:TableCell></asp:TableRow>
+
+    <asp:TableRow>
+    <asp:TableCell Width="500px"  >
+        
    <%-- Training  --%>           
-        <asp:GridView ID="GridViewTraining" OnRowCommand="Training_RowCommand" CssClass="GridViewitem" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="TrainingSource1" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" AutoGenerateColumns="False" DataKeyNames="TrainingID" PageSize="15" ShowFooter="True" EditRowStyle-Width="50px" EditRowStyle-CssClass="ResourceRowWidth">
+        <asp:GridView ID="GridViewTraining" CssClass="GridViewitem" runat="server" AllowPaging="True" AllowSorting="True" DataSourceID="TrainingSource1" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" AutoGenerateColumns="False" DataKeyNames="TrainingID" PageSize="15" ShowFooter="True" EditRowStyle-Width="50px" EditRowStyle-CssClass="ResourceRowWidth">
             <AlternatingRowStyle BackColor="#DCDCDC"></AlternatingRowStyle>
             <Columns>
                 
@@ -42,8 +76,7 @@
                         <asp:LinkButton runat="server" Text="Update" CommandName="Update" CausesValidation="True" ValidationGroup="Edit" ID="Button4"></asp:LinkButton>
                         <asp:LinkButton runat="server" Text="Delete" CommandName="Delete" CausesValidation="False" ID="TrainingDeleteB" OnClientClick="return confirm('Are you sure you want to delete this entry?');"></asp:LinkButton>
                     </ItemTemplate>
-                    <FooterTemplate><asp:LinkButton ID="TrainingInsert" runat="server" Text="Add" CommandName="TrainingInsert" class="btn btn-primary btn-sm"></asp:LinkButton></FooterTemplate>
-                </asp:TemplateField>
+                    </asp:TemplateField>
 
 
                 <asp:TemplateField HeaderText="TrainingID" InsertVisible="False" Visible="false" SortExpression="TrainingID">
@@ -71,11 +104,7 @@
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Bind("ResourceName") %>' ID="ITResourceNameL"></asp:Label>
                 </ItemTemplate>
-                <FooterTemplate>
-                    <asp:DropDownList runat="server" ID="ResourceNameDD" SelectedValue='<%# Bind("ResourceName") %>' DataSourceID="ResourceNameDataSource" DataTextField="ResourceName" DataValueField="BlueBinResourceID">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ResourceNameDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="SELECT DISTINCT [BlueBinResourceID],LastName + ', ' + FirstName as [ResourceName] FROM bluebin.[BlueBinResource]"></asp:SqlDataSource>
-                 </FooterTemplate>
+                
                 <ItemStyle Wrap="False" Width="60px"></ItemStyle>
             </asp:TemplateField>
           
@@ -113,11 +142,7 @@
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Bind("ModuleName") %>' ID="ITModuleNameL"></asp:Label>
                 </ItemTemplate>
-                <FooterTemplate>
-                    <asp:DropDownList runat="server" ID="TrainingModuleDDF" DataSourceID="TrainingModuleDataSourceF" DataTextField="ModuleName" DataValueField="TrainingModuleID" AppendDataBoundItems="False">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="TrainingModuleDataSourceF" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' SelectCommand="select TrainingModuleID,ModuleName from bluebin.TrainingModule where Active = 1"></asp:SqlDataSource>
-                </FooterTemplate>
+                
                 <ItemStyle Wrap="False" Width="60px"></ItemStyle>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ModuleDescription" SortExpression="ModuleDescription" Visible ="False">
@@ -144,14 +169,7 @@
                         <asp:ListItem Value="Teach">Teach</asp:ListItem>
                     </asp:DropDownList>
                 </ItemTemplate>
-                    <FooterTemplate>
-                    <asp:DropDownList runat="server"  AutoPostBack="False" ID="StatusDDF">
-                        <asp:ListItem Value="No" Selected="True">No</asp:ListItem>
-                        <asp:ListItem Value="Trained">Trained</asp:ListItem>
-                        <asp:ListItem Value="Demo">Demo</asp:ListItem>
-                        <asp:ListItem Value="Teach">Teach</asp:ListItem>
-                    </asp:DropDownList>
-                </FooterTemplate>
+                
             </asp:TemplateField>
                 
                 <asp:TemplateField HeaderText="Updater" SortExpression="Updater">
@@ -209,7 +227,7 @@
 
 <%-- Training Modules --%>  
 
-    <asp:TableRow><asp:TableCell><asp:Label runat="server" id="AddUserErrorLabel"></asp:Label></asp:TableCell></asp:TableRow>
+    <asp:TableRow><asp:TableCell><asp:Label runat="server" id="TrainingModuleAddErrorText"></asp:Label></asp:TableCell></asp:TableRow>
 <asp:TableRow>
 <asp:TableCell Width="600px"  >
 <asp:Label runat="server" id="hiddenTrainingModule" Visible="False"><h3>Training Modules</h3><p></asp:Label>

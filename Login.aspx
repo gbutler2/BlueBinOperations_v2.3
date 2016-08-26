@@ -44,7 +44,7 @@
         </asp:ScriptManager>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container" style="position: absolute; margin: 0 5% 0 5%;">
                 <div class="navbar-header">
                     <a href="" runat="server" class="navbar-brand" onClick="switchView('Home')">&nbsp;<asp:Image style="display:inline;" ID="Image1" runat="server" Height="20px" ImageUrl="~/img/BlueBin_icon.png" Width="20px" />&nbsp;BlueBin DMS Login</a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

@@ -59,7 +59,7 @@ Partial Public Class QCN
 
     End Sub
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Protected Sub NewQCNB_Click(sender As Object, e As EventArgs) Handles NewQCNB.Click
         Response.Redirect("~/QCNForm")
         GridViewQCN.DataBind()
     End Sub

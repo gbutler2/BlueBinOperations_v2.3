@@ -17,8 +17,11 @@ Partial Class Training
         SearchModuleLB.Visible = True
         ExportTraining.Visible = True
         hiddenTraining.Visible = True
+        AddTrainingJT.Visible = True
         hiddenTrainingModule.Visible = False
         GridViewTraining.DataBind()
+        TrainingAddErrorText.Text = ""
+        TrainingModuleAddErrorText.Text = ""
     End Sub
 
     Protected Sub TrainingModulesB_Click(sender As Object, e As EventArgs) Handles TrainingModulesB.Click
@@ -29,9 +32,12 @@ Partial Class Training
         SearchNameLB.Visible = False
         SearchModuleLB.Visible = True
         ExportTraining.Visible = False
+        AddTrainingJT.Visible = False
         hiddenTraining.Visible = False
         hiddenTrainingModule.Visible = True
         GridViewTrainingModule.DataBind()
+        TrainingAddErrorText.Text = ""
+        TrainingModuleAddErrorText.Text = ""
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -43,40 +49,63 @@ Partial Class Training
             SearchNameLB.Visible = True
             SearchModuleLB.Visible = True
             ExportTraining.Visible = True
+            AddTrainingJT.Visible = True
             hiddenTraining.Visible = True
             hiddenTrainingModule.Visible = False
             UpdaterTB.Text = UserLogin
             GridViewTraining.DataBind()
             GridViewTrainingModule.DataBind()
+            TrainingAddErrorText.Text = ""
+            TrainingModuleAddErrorText.Text = ""
         End If
     End Sub
-    Protected Sub Training_RowCommand(ByVal sender As System.Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs)
-        If e.CommandName = "TrainingInsert" Then
-            Dim txtResourceName As String = TryCast(GridViewTraining.FooterRow.FindControl("ResourceNameDD"), DropDownList).SelectedItem.Value
-            Dim txtTrainingModuleID As String = TryCast(GridViewTraining.FooterRow.FindControl("TrainingModuleDDF"), DropDownList).SelectedItem.Value
-            Dim txtStatus As String = TryCast(GridViewTraining.FooterRow.FindControl("StatusDDF"), DropDownList).SelectedItem.Value
+    Protected Sub TrainingAddB_Click(sender As Object, e As EventArgs) Handles TrainingAddB.Click
+
+        Dim conn As New SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString)
+        Dim ad As New SqlDataAdapter()
+        Dim cmd As New SqlCommand()
+        Dim txtName As String = NameDDAdd.SelectedItem.Value
+        Dim txtTrainingModule As String = TrainingModuleUODDAdd.SelectedItem.Value
+        Dim txtStatus As String = StatusDDAdd.SelectedItem.Value
+        cmd.Connection = conn
+        cmd.CommandText = "exec sp_InsertTraining '" & txtName & "','" & txtTrainingModule & "','" & txtStatus & "','" & UserLogin & "'"
+        conn.Open()
+        cmd.ExecuteNonQuery()
+        conn.Close()
+        GridViewTraining.DataBind()
 
 
-            Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
-            Using con As New SqlConnection(constr)
-                Using cmd As New SqlCommand("sp_InsertTraining")
-                    cmd.CommandType = CommandType.StoredProcedure
-                    cmd.Parameters.AddWithValue("@BlueBinResource", txtResourceName)
-                    cmd.Parameters.AddWithValue("@TrainingModuleID", txtTrainingModuleID)
-                    cmd.Parameters.AddWithValue("@Status", txtStatus)
-                    cmd.Parameters.AddWithValue("@Updater", UserLogin)
-                    cmd.Connection = con
-                    con.Open()
-                    cmd.ExecuteNonQuery()
-                    con.Close()
-                End Using
-            End Using
-
-            GridViewTraining.DataBind()
-        End If
-
+        TrainingAddErrorText.Text = "User Training Created"
 
     End Sub
+
+    'Protected Sub Training_RowCommand(ByVal sender As System.Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs)
+    '    If e.CommandName = "TrainingInsert" Then
+    '        Dim txtResourceName As String = TryCast(GridViewTraining.FooterRow.FindControl("ResourceNameDD"), DropDownList).SelectedItem.Value
+    '        Dim txtTrainingModuleID As String = TryCast(GridViewTraining.FooterRow.FindControl("TrainingModuleDDF"), DropDownList).SelectedItem.Value
+    '        Dim txtStatus As String = TryCast(GridViewTraining.FooterRow.FindControl("StatusDDF"), DropDownList).SelectedItem.Value
+
+
+    '        Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
+    '        Using con As New SqlConnection(constr)
+    '            Using cmd As New SqlCommand("sp_InsertTraining")
+    '                cmd.CommandType = CommandType.StoredProcedure
+    '                cmd.Parameters.AddWithValue("@BlueBinResource", txtResourceName)
+    '                cmd.Parameters.AddWithValue("@TrainingModuleID", txtTrainingModuleID)
+    '                cmd.Parameters.AddWithValue("@Status", txtStatus)
+    '                cmd.Parameters.AddWithValue("@Updater", UserLogin)
+    '                cmd.Connection = con
+    '                con.Open()
+    '                cmd.ExecuteNonQuery()
+    '                con.Close()
+    '            End Using
+    '        End Using
+
+    '        GridViewTraining.DataBind()
+    '    End If
+
+
+    'End Sub
 
     Protected Sub TrainingModule_RowCommand(ByVal sender As System.Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs)
         If e.CommandName = "TrainingModuleInsert" Then
@@ -101,6 +130,7 @@ Partial Class Training
             End Using
 
             GridViewTrainingModule.DataBind()
+            TrainingModuleAddErrorText.Text = "TrainingModule Created"
         End If
 
 
