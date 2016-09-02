@@ -59,12 +59,19 @@ Partial Class Scans
     Protected Sub OnRowDataBound(sender As Object, e As GridViewRowEventArgs)
 
         If e.Row.RowType = DataControlRowType.DataRow Then
-            Dim cellMatched As TableCell = e.Row.Cells(11)
+            Dim cellExtracted As TableCell = e.Row.Cells(11)
+            Dim cellMatched As TableCell = e.Row.Cells(12)
             If cellMatched.Text = "Yes" Then
                 cellMatched.BackColor = Color.Green
             End If
             If cellMatched.Text = "Partial" Then
                 cellMatched.BackColor = Color.LightYellow
+            End If
+            If cellExtracted.Text = "Yes" Then
+                cellExtracted.BackColor = Color.Green
+            End If
+            If cellExtracted.Text = "Partial" Then
+                cellExtracted.BackColor = Color.LightYellow
             End If
 
 

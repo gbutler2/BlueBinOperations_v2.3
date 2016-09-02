@@ -103,7 +103,7 @@
             </asp:TableRow> <asp:TableRow Height="10"></asp:TableRow>
             <asp:TableRow>    
                 <asp:TableCell>
-                    <asp:Label ID="Requester" runat="server" Text="Requested By"></asp:Label>&nbsp;<asp:Image runat="server" ImageUrl="img/info.png" Height="12" Width="12" ImageAlign="Middle" ToolTip="Plase validate accuracy that the full name is typed correctly for reporting purposes." />
+                    <asp:Label ID="Requester" runat="server" Text="Requested By"></asp:Label>&nbsp;<asp:Image runat="server" ImageUrl="img/info.png" Height="12" Width="12" ImageAlign="Middle" ToolTip="Please validate accuracy that the full name is typed correctly for reporting purposes." />
                     <asp:RequiredFieldValidator Display="Dynamic" ID="RequiredFieldValidatorRequester" ControlToValidate="RequesterTB" runat="server" ForeColor="Red" ErrorMessage=" Required" Font-Size="X-Small"></asp:RequiredFieldValidator>
                 </asp:TableCell><asp:TableCell>
                  <asp:TextBox ID="RequesterTB" runat="server" Width="200px"></asp:TextBox>   

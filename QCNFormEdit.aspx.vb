@@ -100,6 +100,7 @@ Partial Class QCNFormEdit
 
         Details = Details.Replace("'", "''")
         Updates = Updates.Replace("'", "''")
+        ClinicalDescription = ClinicalDescription.Replace("'", "''")
         InternalReference = InternalReference.Replace("'", "''")
 
         'If String.IsNullOrEmpty(AssignedDD.SelectedItem.Value.ToString()) Then

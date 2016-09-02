@@ -155,6 +155,7 @@ Public Class Dashboard
             Dim OPQCNDashboard As String
             Dim OPQCNDetail As String
             Dim OPGembaDashboard As String
+            Dim OPItemUsage As String
 
             Dim SrcBuyerPerformance As String
             Dim SrcSpecialPerformance As String
@@ -287,6 +288,9 @@ Public Class Dashboard
                     cmdmenu.Parameters.Clear()
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Gemba Dashboard")
                     OPGembaDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Item Usage")
+                    OPItemUsage = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
 
                     'REPORTS-Sourcing
@@ -474,6 +478,12 @@ Public Class Dashboard
                 MenuOPGembaDashboard.Visible = True
             Else
                 MenuOPGembaDashboard.Visible = False
+            End If
+
+            If OPItemUsage = "Yes" Then
+                MenuOPItemUsage.Visible = True
+            Else
+                MenuOPItemUsage.Visible = False
             End If
 
 

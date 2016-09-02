@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css">
-
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
@@ -60,6 +60,7 @@
                             <li><a href="#" runat="server" id="MenuOPOverallLineVolume" onClick="switchView('Overall Line Volume')">Overall Line Volume</a></li>
                             <li><a href="#" runat="server" id="MenuOPKanbansAdjusted" onClick="switchView('Kanbans Adjusted')">Kanbans Adjusted</a></li>
                             <li><a href="#" runat="server" id="MenuOPConesDashboard" onClick="switchView('Cones Deployed Dashboard')">Cones Dashboard</a></li>
+                            <li><a href="#" runat="server" id="MenuOPItemUsage" onClick="switchView('Item Usage and Cost')">Item Usage</a></li>
                             <li class="divider"></li>
                             <li><a href="#" runat="server" id="MenuOPQCNDashboard" onClick="switchView('QCN Dashboard')">QCN Dashboard</a></li>
                             <li><a href="#" runat="server" id="MenuOPQCNDetail" onClick="switchView('QCN Detail')">QCN Detail</a></li>
