@@ -147,6 +147,7 @@ Public Class Dashboard
             Dim OPSupplySpend As String
             Dim OPStatCalls As String
             Dim OPWarehouseVolume As String
+            Dim OPWarehouseHistory As String
             Dim OPWarehouseDetail As String
             Dim OPPickLineVolume As String
             Dim OPOverallLineVolume As String
@@ -261,6 +262,9 @@ Public Class Dashboard
                     cmdmenu.Parameters.Clear()
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Stat Calls")
                     OPStatCalls = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Warehouse History")
+                    OPWarehouseHistory = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "OP-Warehouse Volume")
                     OPWarehouseVolume = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -430,6 +434,12 @@ Public Class Dashboard
                 MenuOPWarehouseVolume.Visible = True
             Else
                 MenuOPWarehouseVolume.Visible = False
+            End If
+
+            If OPWarehouseHistory = "Yes" Then
+                MenuOPWarehouseHistory.Visible = True
+            Else
+                MenuOPWarehouseHistory.Visible = False
             End If
 
             If OPWarehouseDetail = "Yes" Then

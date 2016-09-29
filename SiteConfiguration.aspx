@@ -305,7 +305,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="QCN Type Name" SortExpression="Name">
                 <EditItemTemplate>
-                    <asp:TextBox runat="server" Text='<%# Bind("Name") %>' ID="EditQCNCName"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidatorName" ValidationGroup="EditQCNComplexity" runat="server" ControlToValidate="EditQCNName" Display="Dynamic" ForeColor="Red" Font-Size="X-Small">REQUIRED</asp:RequiredFieldValidator>
+                    <asp:TextBox runat="server" Text='<%# Bind("Name") %>' ID="EditQCNCName"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidatorName" ValidationGroup="EditQCNComplexity" runat="server" ControlToValidate="EditQCNCName" Display="Dynamic" ForeColor="Red" Font-Size="X-Small">REQUIRED</asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="Label2"></asp:Label>
@@ -433,7 +433,7 @@
         <asp:SqlDataSource runat="server" ID="QCNComplexityDataSource" ConnectionString='<%$ ConnectionStrings:Site_ConnectionString %>' 
             DeleteCommand="exec sp_DeleteQCNComplexity @original_QCNCID,@original_Name" 
             OldValuesParameterFormatString="original_{0}" SelectCommand="exec sp_SelectQCNComplexity" 
-            UpdateCommand="exec sp_EditQCNComplexity @original_QCNCID,@Status,@Active,@Description">
+            UpdateCommand="exec sp_EditQCNComplexity @original_QCNCID,@Name,@Active,@Description">
         <DeleteParameters>
             <asp:Parameter Name="original_QCNCID" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="original_Name" Type="String"></asp:Parameter>

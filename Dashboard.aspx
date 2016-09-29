@@ -55,6 +55,7 @@
                             <li><a href="#" runat="server" id="MenuOPSupplySpend" onClick="switchView('Supply Spend')">Supply Spend</a></li>
                             <li><a href="#" runat="server" id="MenuOPStatCalls" onClick="switchView('Stat Calls')">Stat Calls</a></li>
                             <li><a href="#" runat="server" id="MenuOPWarehouseVolume" onClick="switchView('Warehouse Value')">Warehouse Volume</a></li>
+                            <li><a href="#" runat="server" id="MenuOPWarehouseHistory" onClick="switchView('Warehouse History')">Warehouse History</a></li>
                             <li><a href="#" runat="server" id="MenuOPWarehouseDetail" onClick="switchView('Warehouse Size')">Warehouse Detail</a></li>
                             <li><a href="#" runat="server" id="MenuOPPickLineVolume" onClick="switchView('Pick Line Volume')">Pick Line Volume</a></li>
                             <li><a href="#" runat="server" id="MenuOPOverallLineVolume" onClick="switchView('Overall Line Volume')">Overall Line Volume</a></li>

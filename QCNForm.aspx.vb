@@ -30,6 +30,7 @@ Partial Class QCNForm
         Dim Facility As String
         Dim ItemID As String
         Dim ClinicalDescription As String
+        Dim Sequence As String
         Dim ApprovedBy As String
         Dim Requester As String
         Dim Assigned As String
@@ -50,6 +51,7 @@ Partial Class QCNForm
         QCNType = QCNTypeDD.SelectedItem.Value
         ItemID = ItemIDTB.Text
         ClinicalDescription = ClinicalDescriptionTB.Text.ToUpper()
+        Sequence = SequenceTB.Text.ToUpper()
         Requester = RequesterTB.Text
         ApprovedBy = ApprovedByTB.Text
         Assigned = AssignedDD.SelectedItem.Value
@@ -83,6 +85,7 @@ Partial Class QCNForm
                 '" & Location & "',
                 '" & ItemID & "',
                 '" & ClinicalDescription & "',
+                '" & Sequence & "',
                 '" & Requester & "',
                 '" & ApprovedBy & "',
                 '" & Assigned & "',

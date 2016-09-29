@@ -15,7 +15,7 @@
             
             <h2>BlueBin Dashboard</h2>
             <p>
-                View your Daily Management Dashboard Reports by logging into the BlueBin Intelligence Module powered by Tableau.  Dozens of market-leading reports are available to help you track the health of your Supply Chain.
+                View your Daily Management Dashboard Reports by launching the BlueBin Intelligence Module powered by Tableau.  Dozens of market-leading reports are available to help you track the health of your Supply Chain.
             </p>
             <p>
                 <a runat="server" class="btn btn-primary btn-sm" href="~/Dashboard">Click Here &raquo;
@@ -43,15 +43,28 @@
         </div>
          </div>
     <div class="row">        
-        <div class="col-md-4" id="hardwarediv" runat="server">
-            <h2>Hardware Orders</h2>
+         <div class="col-md-4" id="huddleboarddiv" runat="server">
+            <h2>Digital Huddle Board</h2>
             <p>
-                You can easily place, and track, orders for more hardware that will be routed to the BlueBin Operations team.
+                View your BlueBin Digital Huddle Board powered by Tableau.
             </p>
             <p>
-                <a class="btn btn-primary btn-sm" runat="server" href="~/HardwareOrder">Click Here &raquo;</a>
+                <a class="btn btn-primary btn-sm" runat="server" href="~/HuddleBoard" target ="_blank">Click Here &raquo;</a>
             </p>
         </div>
+        
+        <div class="col-md-4" id="conesdiv" runat="server">
+            <h2>Cones Module</h2>
+            <p>
+                You can record stock out Item cone placement for tracking in the BlueBin Dashboard and Digital Huddle Board.
+            </p>
+            <p>
+                <a class="btn btn-primary btn-sm" runat="server" href="~/ConesDeployed">Click Here &raquo;</a>
+            </p>
+       
+    </div>     
+        
+        
  
       <div class="col-md-4" runat="server">
             <h2>Operational Procedures</h2>
@@ -63,6 +76,10 @@
             </p>
        
     </div>  
+        
+     
+    </div>
+    <div class="row">
         <div class="col-md-4" id="scanningdiv" runat="server">
             <h2>Scanning</h2>
             <p>
@@ -73,7 +90,15 @@
             </p>
        
     </div>  
-        
-    </div>
 
+        <div class="col-md-4" id="hardwarediv" runat="server">
+            <h2>Hardware Orders</h2>
+            <p>
+                You can easily place, and track, orders for more hardware that will be routed to the BlueBin Operations team.
+            </p>
+            <p>
+                <a class="btn btn-primary btn-sm" runat="server" href="~/HardwareOrder">Click Here &raquo;</a>
+            </p>
+        </div>
+        </div>
 </asp:Content>

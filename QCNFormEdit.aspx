@@ -101,6 +101,14 @@
                 </asp:TableCell><asp:TableCell>
                     <asp:TextBox ID="ClinicalDescriptionTB" style="text-transform:uppercase" runat="server"  TextMode="SingleLine" Width="250px" ></asp:TextBox>
                 </asp:TableCell></asp:TableRow><asp:TableRow Height="10"></asp:TableRow>
+            
+            <asp:TableRow>    
+                <asp:TableCell>
+                    <asp:Label ID="Sequence"  runat="server" Text="Sequence"></asp:Label>&nbsp;<asp:Image runat="server" ImageUrl="img/info.png" Height="12" Width="12" ImageAlign="Middle" ToolTip="If applicable enter the Sequence# for the new item or new # for an existing item." />
+                </asp:TableCell><asp:TableCell>
+                    <asp:TextBox ID="SequenceTB" style="text-transform:uppercase" runat="server"  TextMode="SingleLine"  Width="250px"></asp:TextBox>
+                </asp:TableCell></asp:TableRow>
+            <asp:TableRow Height="10"></asp:TableRow>
 
             <asp:TableRow>    
                 <asp:TableCell>

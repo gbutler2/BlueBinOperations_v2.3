@@ -33,6 +33,7 @@ Partial Class QCNFormEdit
             QCNTypeDD.SelectedValue = dt.Rows(0)("QCNType").ToString()
             ItemIDTB.Text = dt.Rows(0)("ItemID").ToString()
             ClinicalDescriptionTB.Text = dt.Rows(0)("ClinicalDescription").ToString()
+            SequenceTB.Text = dt.Rows(0)("Sequence").ToString()
             QCNStatusDD.SelectedValue = dt.Rows(0)("QCNStatus").ToString()
             DetailsTB.Text = dt.Rows(0)("Details").ToString()
             UpdatesTB.Text = dt.Rows(0)("Updates").ToString()
@@ -66,6 +67,7 @@ Partial Class QCNFormEdit
         Dim QCNType As String
         Dim ItemID As String
         Dim ClinicalDescription As String
+        Dim Sequence As String
         Dim QCNStatus As String
         Dim Details As String
         Dim Updates As String
@@ -87,6 +89,7 @@ Partial Class QCNFormEdit
         QCNType = QCNTypeDD.SelectedItem.Value
         ItemID = ItemIDTB.Text
         ClinicalDescription = ClinicalDescriptionTB.Text.ToUpper()
+        Sequence = SequenceTB.Text.ToUpper()
         QCNStatus = QCNStatusDD.SelectedItem.Value
         Details = DetailsTB.Text
         Updates = UpdatesTB.Text
@@ -115,6 +118,7 @@ Partial Class QCNFormEdit
                             '" & Location & "',
                             '" & ItemID & "',
                             '" & ClinicalDescription & "',
+                            '" & Sequence & "',
                             '" & Requester & "',
                             '" & ApprovedBy & "',
                             '" & Assigned & "',

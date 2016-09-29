@@ -74,6 +74,8 @@ Partial Class _Default
             Dim MENUHardware As String
             Dim MENUScanning As String
             Dim MENUOther As String
+            Dim MENUCones As String
+            Dim UserMENUCones As String
 
             Dim constr As String = ConfigurationManager.ConnectionStrings("Site_ConnectionString").ConnectionString
 
@@ -108,6 +110,11 @@ Partial Class _Default
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
                     cmdadmin.Parameters.AddWithValue("@OpName", "ADMIN-TRAINING")
                     UserADMINTRAINING = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
+                    'UserMENU-Dashboard-HuddleBoard
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Dashboard-HuddleBoard")
+                    UserMENUDashboardHB = Convert.ToString(cmdadmin.ExecuteScalar())
                     cmdadmin.Parameters.Clear()
                     'UserMENU-Dashboard
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
@@ -154,6 +161,11 @@ Partial Class _Default
                     cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Scanning")
                     UserMENUScanning = Convert.ToString(cmdadmin.ExecuteScalar())
                     cmdadmin.Parameters.Clear()
+                    'UserMENU-Cones
+                    cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
+                    cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Cones")
+                    UserMENUCones = Convert.ToString(cmdadmin.ExecuteScalar())
+                    cmdadmin.Parameters.Clear()
                     'UserMENU-Other
                     cmdadmin.Parameters.AddWithValue("@UserLogin", UserLogin)
                     cmdadmin.Parameters.AddWithValue("@OpName", "MENU-Other")
@@ -170,6 +182,10 @@ Partial Class _Default
                     conmenu.Open()
                     'cmd.ExecuteNonQuery()
 
+                    'MENU-Dashboard-HuddleBoard
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard-HuddleBoard")
+                    MENUDashboardHB = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
                     'MENU-Dashboard
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Dashboard")
                     MENUDashboard = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -206,6 +222,10 @@ Partial Class _Default
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Scanning")
                     MENUScanning = Convert.ToString(cmdmenu.ExecuteScalar())
                     cmdmenu.Parameters.Clear()
+                    'MENU-Cones
+                    cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Cones")
+                    MENUCones = Convert.ToString(cmdmenu.ExecuteScalar())
+                    cmdmenu.Parameters.Clear()
                     'MENU-Other
                     cmdmenu.Parameters.AddWithValue("@ConfigName", "MENU-Other")
                     MENUOther = Convert.ToString(cmdmenu.ExecuteScalar())
@@ -232,6 +252,12 @@ Partial Class _Default
                 scanningdiv.Visible = True
             End If
 
+            If MENUCones = "No" Or UserMENUCones = "No" Then
+                conesdiv.Visible = False
+            Else
+                conesdiv.Visible = True
+            End If
+
             If MENUHardware = "No" Or UserMENUHardware = "No" Then
                 hardwarediv.Visible = False
             Else
@@ -242,6 +268,14 @@ Partial Class _Default
                 dashboarddiv.Visible = False
             Else
                 dashboarddiv.Visible = True
+            End If
+
+            If MENUDashboardHB = "No" Or UserMENUDashboardHB = "No" Then
+                huddleboarddiv.Visible = False
+
+            Else
+                huddleboarddiv.Visible = True
+
             End If
 
         End If
